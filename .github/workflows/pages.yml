@@ -1,0 +1,62 @@
+# Publishes the slides on GitHub Pages at every push to main. Each slides*.md file
+# becomes a page and a PDF: slides.md -> index.html and slides.pdf,
+# slides.en.md -> en.html and slides.en.pdf. Deleting a file removes its page.
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Build the slides
+        run: |
+          mkdir -p _site
+          for deck in slides*.md; do
+            name="${deck%.md}"
+            lang="${name#slides}"
+            lang="${lang#.}"
+            page="${lang:-index}.html"
+            npx -y @marp-team/marp-cli@4 --theme-set pybr2026.css --html --allow-local-files -o "_site/$page" "$deck"
+            npx -y @marp-team/marp-cli@4 --theme-set pybr2026.css --html --allow-local-files --pdf -o "_site/$name.pdf" "$deck"
+          done
+          cp -r img _site/
+
+      # The PDFs also go up on their own, so they can be downloaded from the run page
+      # even when GitHub Pages is off.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: slides-pdf
+          path: _site/*.pdf
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
