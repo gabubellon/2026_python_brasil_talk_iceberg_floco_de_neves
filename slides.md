@@ -4,402 +4,7 @@ theme: pybr2026
 lang: pt-BR
 paginate: true
 footer: Python Brasil 2026
-title: Python Brasil 2026
----
-
-<!-- _class: capa -->
-<!-- _paginate: false -->
-<!-- _footer: "" -->
-
-<div class="selo">14 a 19<br>de outubro<br>de 2026<br>{Floripa/SC}</div>
-
-# Título da sua palestra
-
-Modelo de slides da Python Brasil 2026
-
-**Seu nome aqui** · @seu_usuario
-
-<!--
-- Que bom que você vai palestrar! O seu jeito de falar vale mais do que qualquer dica deste modelo.
-- Este arquivo é um modelo: cada slide de exemplo mostra um layout e traz dicas nas anotações. Use as que servirem para você.
-- Para começar: guarde uma cópia sem mudanças, escolha a versão escura ou a clara e copie os slides que quiser usar. O comentário _class no topo de cada slide escolhe o layout.
-- Ao reaproveitar um slide, apague estas anotações e escreva as suas.
--->
-
----
-
-<!-- _class: frase -->
-
-# A sala está torcendo por você.
-
-Cada slide deste modelo traz dicas nas anotações: aperte P para ver.
-
-<!--
-- Uma ideia por slide, em até duas linhas. Que frase o público deve levar da sala?
-- Quase toda pessoa palestrante fica nervosa. Se bater o nervosismo, fale para um rosto amigo na plateia.
--->
-
----
-
-<!-- _class: palestrante -->
-
-![Foto de exemplo](img/foto-exemplo.png)
-
-# Seu nome aqui
-
-### O que você faz · onde
-
-- Quem abre a sessão costuma apresentar você
-- Com o tempo curto, este slide pode sair
-- Uma autodescrição ajuda quem não vê
-
-<!--
-- Para usar a sua foto, troque img/foto-exemplo.png pelo caminho dela.
-- Quem abre a sessão costuma apresentar você; com o tempo curto, este slide pode sair.
-- Uma autodescrição ajuda quem não vê, por exemplo: “Sou a Maria, tenho 1,60 m e cabelo preto solto, uso óculos verdes e estou com uma camiseta da PyLadies.”
--->
-
----
-
-> Legibilidade conta.
-
-The Zen of Python, PEP 20
-
-Dicas, <mark>não regras</mark>: use as que servirem para você.
-
-<!--
-- Até três linhas, com quem disse e onde. Vale conferir a autoria numa fonte primária.
-- As aspas verdes vêm do tema: comece a linha da citação com > e escreva sem aspas.
--->
-
----
-
-## Na hora de começar
-
-- Solte o ar devagar antes da primeira frase
-- O público está do seu lado
-- Fale com calma e respire entre as frases
-- A palestra é sua, no seu ritmo
-
-<!--
-- De três a cinco tópicos por slide. Se o texto não couber, divida o conteúdo em dois slides.
--->
-
----
-
-## Agenda
-
-1. A agenda mostra o caminho da palestra
-2. Três a cinco partes costumam bastar
-3. Volte a este slide entre uma parte e outra
-4. Cada parte pode abrir com um slide de seção
-5. Opcional: pode sair se o tempo for curto
-
-<!--
-- A numeração é automática.
-- Voltar à agenda entre as partes ajuda o público a saber onde está.
--->
-
----
-
-<!-- _class: secao -->
-<!-- _paginate: false -->
-<!-- _footer: "" -->
-
-# _01_ Uma seção para cada parte da agenda
-
-<!--
-- O número entre sublinhados vai para o disco limão: # _01_ Título. O número acompanha a ordem da agenda.
--->
-
----
-
-<!-- _class: duas-colunas -->
-
-## Texto no slide
-
-### Em vez de
-
-- Parágrafos inteiros
-- Ler o slide em voz alta
-- Diminuir a fonte para caber
-- A “colinha” no slide
-
-### Experimente
-
-- Uma ideia por slide
-- Falar o que o slide não diz
-- Dividir em dois slides
-- A “colinha” nas anotações do slide
-
-<!--
-- Cada coluna tem o seu título: antes e depois, problema e solução.
-- O detalhe e a “colinha” vão para as anotações, que só você vê.
--->
-
----
-
-## Imagens que explicam
-
-![bg right:42%](img/imagem-exemplo.png)
-
-- Um diagrama no lugar de um parágrafo
-- Uma imagem por ideia
-- Descreva para quem não vê
-
-<!--
-- A caixa cinza marca o lugar da sua imagem: troque img/imagem-exemplo.png pelo caminho da sua. Com ![bg right:42%](arquivo.png), o texto ocupa o resto do slide.
-- Escreva o texto alternativo entre os colchetes de cada imagem que não seja de fundo.
-- Na fala, diga o que a imagem mostra, para quem não enxerga e para quem ouve a gravação.
--->
-
----
-
-## Licença e crédito
-
-![bg left:42%](img/imagem-exemplo.png)
-
-- Fotos suas ou de licença livre
-- A licença permite este uso?
-- Crédito da autoria no slide
-- Pelo menos 1080 px de altura
-
-<!--
-- Uma foto na vertical preenche este espaço; uma foto na horizontal aparece recortada nas laterais. Troque left por right para a imagem ir à direita.
-- Confira se a licença da foto permite o uso numa palestra gravada e dê o crédito no formato “Foto: nome, licença, site”.
--->
-
----
-
-<!-- _class: tres-imagens -->
-
-## Capturas de tela legíveis
-
-- ![Captura de tela de exemplo](img/captura-exemplo.png) Só a parte que importa
-- ![Captura de tela de exemplo](img/captura-exemplo.png) Fonte grande antes de capturar
-- ![Captura de tela de exemplo](img/captura-exemplo.png) Sem senhas, tokens nem e-mails
-
-<!--
-- Para cada captura, troque img/captura-exemplo.png pelo caminho do arquivo e descreva a imagem entre os colchetes.
-- Antes de capturar a tela, aumente o zoom do navegador ou a fonte do terminal.
-- Confira se a captura mostra senhas, tokens, e-mails, abas ou notificações.
--->
-
----
-
-## Código com cores
-
-```python
-@dataclass
-class Palestra:
-    titulo: str
-    duracao_min: int = 25
-
-    def cabe_no_slot(self, slot_min: int) -> bool:
-        # Reserva 5 minutos para perguntas
-        return self.duracao_min + 5 <= slot_min
-```
-
-![bg right:22% 70%](img/sticker-mago.png)
-
-<!--
-- Se a sua palestra não tem código, pode pular este slide.
-- Até 8 linhas e 60 colunas. Se o trecho for maior, divida em slides ou mostre só o que importa.
-- O Marp colore o código sozinho: abra o bloco com ```python, ou com a linguagem do trecho.
-- O código fica num cartão claro também no slide escuro. Estudos de legibilidade mostram que texto escuro sobre fundo claro se lê melhor, em especial em letra pequena, como a do código (Piepenbrock, Mayr e Buchner, 2014).
-- Se preferir fundo escuro no código, troque as cores do código no pybr2026.css pelas do tema Monokai, com o fundo #1A1A1A, e deixe a fonte bem grande.
--->
-
----
-
-<!-- _class: duas-colunas miuda -->
-
-## Um exemplo menor também ensina
-
-### Muito pequeno para ler 😟
-
-```python
-from dataclasses import dataclass
-from datetime import datetime, timedelta
-
-@dataclass
-class Palestra:
-    titulo: str
-    inicio: datetime
-    duracao_min: int = 25
-
-    @property
-    def fim(self) -> datetime:
-        return self.inicio + timedelta(minutes=self.duracao_min)
-
-    def conflita_com(self, outra: "Palestra") -> bool:
-        return self.inicio < outra.fim and outra.inicio < self.fim
-
-    def cabe_no_slot(self, slot_min: int) -> bool:
-        # Reserva 5 minutos para perguntas
-        return self.duracao_min + 5 <= slot_min
-```
-
-### Dá para ler do fundo 😊
-
-```python
-def cabe(palestra, slot):
-    # 5 min para perguntas
-    fim = palestra.duracao + 5
-    return fim <= slot
-```
-
-<!--
-- Antes e depois de uma refatoração, ou duas formas de resolver o mesmo problema.
-- Cada bloco de código aceita até 30 colunas. Com a classe miuda no slide, o código da esquerda fica pequeno de propósito, para mostrar como a letra miúda aparece no telão.
-- Emoji também é recurso: um rosto triste ou feliz diz na hora qual lado é o exemplo a evitar. O título diz o mesmo em palavras, para quem não vê o emoji.
--->
-
----
-
-<!-- _class: numeros -->
-
-## Três números que ajudam
-
-- **18** pontos de letra: dá para ler do fundo da sala
-- **1** ensaio em voz alta mostra o tempo real
-- **5** minutos para perguntas no fim
-
-<!--
-- Até três números, cada um com um rótulo do que mede.
-- O número vai em negrito no começo do item: - **18** rótulo.
--->
-
----
-
-<!-- _class: cartoes -->
-
-## Antes de subir ao palco
-
-1. **Live coding** Plano B: capturas de tela ou um vídeo da demo.
-2. **Internet** Com vídeos e páginas baixados, você não depende da rede.
-3. **PDF** Leve os slides em PDF num pendrive.
-
-<!--
-- Escolha o plano B que combina com a sua palestra e ensaie a troca para ele no seu computador.
-- Com palestras emendadas, nem sempre dá para testar o som; um vídeo legendado funciona sem áudio.
--->
-
----
-
-## O seu dia de palestra
-
-| Quando | Sugestão |
-|---|---|
-| Antes do evento | Tirar dúvidas no grupo de palestrantes no Telegram |
-| Na véspera | Pega leve no karaokê :P Voz e descanso em dia |
-| No dia | Chegar cedo e conhecer a sala |
-| 15 min antes | Dar um oi ao voluntariado da sala |
-| Na palestra | Microfone perto da boca, mesmo ao olhar para o telão |
-| Depois | Publicar os slides no link do QR code |
-
-<!--
-- Tabelas em Markdown já saem com o cabeçalho limão.
-- Testar em casa o adaptador de vídeo e o espelhamento de tela costuma deixar o dia mais tranquilo.
-- Cada sala tem alguém do voluntariado. Projetor, microfone, coragem: o que faltar, a gente ajuda.
--->
-
----
-
-## Versão do Python que você usa (%)
-
-![Gráfico de barras com dados de exemplo: Python 3.10 8%, 3.11 15%, 3.12 29%, 3.13 33% e 3.14 15%](img/grafico-exemplo.png)
-
-Dados de exemplo. Para trocar os dados, veja as anotações deste slide.
-
-<!--
-- O Marp não tem gráfico nativo: o gráfico é uma imagem gerada com matplotlib. Troque os rótulos e os valores em scripts/grafico.py e rode uv run scripts/grafico.py.
-- Escreva os números do gráfico no texto alternativo, para leitores de tela.
-- Um gráfico, uma mensagem: diga em voz alta o que o público deve ver nas barras.
--->
-
----
-
-<!-- _class: fluxo -->
-
-## Um dia de evento
-
-1. Palestras
-2. Coffee break
-3. Lightning talks
-4. PyBar
-
-<!--
-- Um fluxo mostra uma sequência: os passos de um processo, as etapas de um pipeline, a programação do dia.
-- Conte o fluxo da esquerda para a direita: primeiro, depois, no fim.
--->
-
----
-
-<!-- _class: imagem-cheia -->
-<!-- _paginate: false -->
-<!-- _footer: "" -->
-
-![bg](img/fundo-exemplo.png)
-
-Legenda da foto. Foto: Nome da pessoa · CC BY 4.0
-
-<!--
-- Troque o arquivo em ![bg](...). A legenda é o último parágrafo do slide.
-- Dê o crédito da foto na legenda, como no exemplo.
--->
-
----
-
-<!-- _class: destaque -->
-
-## Sua palestra é para todo mundo
-
-- O público inclui crianças: conteúdo para todas as idades
-- Humor que não ridiculariza ninguém, exemplos sem estereótipos
-- Na dúvida sobre algum conteúdo, a organização ajuda
-
-<!--
-- O código de conduta da Python Brasil vale para todas as pessoas no evento, inclusive no palco: python.org.br/cdc.
-- Se você sofrer ou presenciar assédio, discriminação ou humilhação, procure a Equipe de Resposta.
--->
-
----
-
-## Referências
-
-- Código de conduta da Python Brasil [python.org.br/cdc](https://python.org.br/cdc)
-- Marp, slides em Markdown [marp.app](https://marp.app)
-- Fontes Roboto e Cascadia Mono [fonts.google.com](https://fonts.google.com)
-- Verificador de contraste [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/)
-
-<!--
-- Um material por linha, com o nome e o endereço curto.
-- Uma página só com todos os links (um README, um gist ou um Linktree) cabe num QR code no encerramento.
--->
-
----
-
-<!-- _class: encerramento -->
-<!-- _paginate: false -->
-<!-- _footer: "" -->
-
-# Perguntas?
-
-**Seu nome aqui**
-_@seu_usuario_
-_voce@exemplo.com.br_
-
-![QR code para 2026.pythonbrasil.org.br](img/qr.png)
-
-Troque pelo seu QR code: contato, slides ou site
-
-<!--
-- O QR code pode levar ao seu contato, aos seus slides ou a uma página com tudo isso. Com uma página só, você troca os links depois sem mudar o QR code.
-- Para gerar o seu QR code: uv run scripts/qr.py https://seu-endereco. O script troca o arquivo img/qr.png. Depois, troque a legenda pelo link.
-- Os próximos slides repetem os layouts na versão clara, com mais dicas.
--->
-
+title: O Iceberg Foi pro Snowflake
 ---
 
 <!-- _class: capa light -->
@@ -408,14 +13,214 @@ Troque pelo seu QR code: contato, slides ou site
 
 <div class="selo">14 a 19<br>de outubro<br>de 2026<br>{Floripa/SC}</div>
 
-# Título da sua palestra
+# O Iceberg Foi pro Snowflake
 
-Versão clara, para projetor, TV ou monitor
+A jornada real de uma migração de dados em produção
 
-**Seu nome aqui** · @seu_usuario
+**Gabu Bellon** · @gabubellon
 
 <!--
-- Tela de LED do tamanho de uma parede: use a versão escura, que não ofusca o público. Projetor, TV ou monitor: use a versão clara. O código fica em fundo claro nas duas.
+- Adaptado da versão apresentada na Caipyra 2026.
+-->
+
+---
+
+<!-- _class: frase light -->
+
+# O design destes slides teve apoio de IA.
+
+O conteúdo técnico é todo do palestrante.
+
+---
+
+<!-- _class: palestrante light -->
+
+![Foto de Gabu Bellon](img/202506_avatar.jpg)
+
+# Gabu Bellon
+
+### Lead Data Engineer · phData · @gabubellon
+
+- Pronomes: Nenhum / Ele / Dele
+- Nerd/Geek, Comunista e pai da Ceci
+- Entusiasta de Comunidade de Dados
+
+<!--
+- Trocar img/foto-exemplo.png por uma foto real antes da palestra.
+-->
+
+---
+
+<!-- _class: cartoes light -->
+
+## Uma Jornada em Três Gerações
+
+1. **G0 · Lake** Monólito Apache Iceberg, o jeito que tudo começou.
+2. **G1 · Warehouse** Snowflake e dbt, via Datapipe.
+3. **G2 · Batch** Airflow + Kubernetes, a arquitetura atual.
+
+<!--
+- Nenhuma geração substitui a anterior de uma vez: as três convivem durante a migração.
+- Migração feed a feed, com corte controlado, sem big-bang.
+-->
+
+---
+
+<!-- _class: numeros light -->
+
+## A Plataforma de Dados
+
+- **30+** fontes de dados de fornecedores do mercado financeiro
+- **50+** DAGs em produção
+- **3** gerações de arquitetura convivendo
+
+<!--
+- A plataforma consolida preços, índices, derivativos e referências do mercado financeiro.
+-->
+
+---
+
+<!-- _class: destaque light -->
+
+## O que funciona nem sempre é o que escala.
+
+- Crescimento sem governança virou o produto de fato: manutenção
+- Cada geração tentou resolver o gargalo que a anterior deixou
+- A saída não é um big-bang: é feed a feed, com corte controlado
+
+---
+
+<!-- _class: secao light -->
+<!-- _paginate: false -->
+<!-- _footer: "" -->
+
+# _00_ Ferramentas
+
+<!--
+- Como tudo começou: o monólito Apache Iceberg.
+-->
+
+---
+
+<!-- _class: cartoes light fig-dir -->
+
+<style scoped>
+section { --logo: url("img/logo_airflow.jpg"); --fig: url("img/sticker-mago.png"); --fig-rot: 9deg; }
+</style>
+
+## Apache Airflow
+
+1. **O que é** Ferramenta para agendar e rodar tarefas.
+2. **Como funciona** Cada fluxo é uma DAG em código Python.
+3. **No dia a dia** Mostra dependências, falhas e logs num só lugar.
+
+---
+
+<!-- _class: cartoes light logo-tl fig-esq -->
+
+<style scoped>
+section { --logo: url("img/logo_snowflake.png"); --fig: url("img/sticker-mago-ola.png"); --fig-rot: 8deg; }
+</style>
+
+## Snowflake
+
+1. **O que é** Data warehouse gerenciado, na nuvem.
+2. **Diferencial** Separa armazenamento e processamento.
+3. **No dia a dia** Consultas em SQL, sem cuidar de servidor.
+
+---
+
+<!-- _class: cartoes light logo-br fig-dir -->
+
+<style scoped>
+section { --logo: url("img/logo_dbt.png"); --fig: url("img/sticker-witch.png"); --fig-rot: -7deg; }
+</style>
+
+## dbt
+
+1. **O que é** Ferramenta para transformar dados com SQL.
+2. **Como organiza** Modelos em camadas: staging, integration, publication.
+3. **No dia a dia** Traz teste e versionamento pro SQL.
+
+---
+
+<!-- _class: cartoes light logo-tr fig-esq -->
+
+<style scoped>
+section { --logo: url("img/logo_apache_iceberg.png"); --fig: url("img/sticker-witch.png"); --fig-rot: -12deg; }
+</style>
+
+## Apache Iceberg
+
+1. **O que é** Formato de tabela para arquivos de dados.
+2. **Pra que serve** Traz transação e versão pros arquivos.
+3. **No dia a dia** Cada commit vira um snapshot: dá pra voltar no tempo.
+
+---
+
+<!-- _class: fluxo-vertical light -->
+<!-- _paginate: true -->
+
+## Catálogo e Metadata
+
+1. Catálogo/Metadata
+2. Schema/Snapshot
+3. Manifest
+4. Dados
+
+
+![bg right:60% contain](img/iceberg-metadata.png)
+<!--
+- O catálogo guarda só um ponteiro: qual metadata file é o atual de cada tabela.
+- Metadata layer: metadata file (schema, snapshots) → manifest list → manifest files.
+- Manifest files apontam os arquivos de dados reais (data layer).
+- Estrutura descrita na especificação oficial do Apache Iceberg (iceberg.apache.org/spec).
+-->
+
+---
+
+<!-- _class: light -->
+
+## Histórico de Snapshots
+<div class="nota-flutuante dir">
+<strong>Snapshots</strong><br>Cada commit vira um snapshot novo: dá pra marcar (tags) e voltar no tempo.
+</div>
+
+![bg left:58% contain](img/iceberg-historical-snapshot-tag.png)
+
+<!--
+- Cada commit do Iceberg vira um snapshot novo na linha do tempo.
+- Dá pra marcar snapshots importantes (tags) e guardar por um tempo, pra auditoria ou retenção.
+- Diagrama da documentação oficial do Apache Iceberg (iceberg.apache.org/docs/latest/branching), Apache License 2.0.
+-->
+
+---
+
+<!-- _class: light logo-tr -->
+
+<style scoped>
+section { --logo: url("img/logo_apache_iceberg.png"); }
+</style>
+
+## Como Acessar o Catálogo
+
+| Catálogo | Implementação |
+|---|---|
+| Python  | Code (PyIceberg e Polars) |
+  Engine  | Code and SaaS (Spark, Flink, Trino, DuckDB e Snowflake) |
+| REST Catalog | Code ou SaaS (Snowflake,Polaris, Unity Catalog, Tabular |
+| Hive Catalog | Code |
+| AWS Glue | SaaS |
+| JDBC Catalog | SaaS |
+| Nessie Catalog | Code |
+| Hadoop Catalog | Code |
+
+<!--
+- Catálogos suportados pelo Apache Iceberg (iceberg.apache.org/docs/latest).
+- HadoopCatalog não implementa rename de tabela e depende de rename atômico do filesystem — por isso é arriscado em object stores como S3.
+- "Na mão" é só a infraestrutura: você sobe e mantém o serviço. "Gerenciado" é alguém cuidando disso por você.
+- Lista parcial: a documentação lista bem mais engines (iceberg.apache.org/multi-engine-support).
+- Polaris, Unity Catalog e Tabular implementam o protocolo REST Catalog da especificação Iceberg.
 -->
 
 ---
@@ -424,210 +229,239 @@ Versão clara, para projetor, TV ou monitor
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
-# _02_ Uma pausa para respirar e beber água
+# _01_ Monólito Iceberg
 
 <!--
-- Entre uma parte e outra, faça uma pausa: respire e beba um gole de água.
-- A pausa parece longa para quem fala e curta para quem ouve.
+- Como tudo começou: o monólito Apache Iceberg.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: fluxo light logo-br -->
 
-## A sua tela no telão
+<style scoped>
+section { --logo: url("img/logo_apache_iceberg.png"); }
+</style>
 
-- Notificações desligadas (modo Não incomodar)
-- Papel de parede neutro
-- Só as abas e os programas da palestra
-- Janela anônima: o histórico não aparece ao digitar endereços
+## Fluxo Legado: do Arquivo ao Lake
+
+1. Arquivo do fornecedor
+2. Airflow dispara o job
+3. Builders em Python
+4. Commit no Iceberg
 
 <!--
-- O telão mostra tudo o que aparece na sua tela: ative o modo Não incomodar antes de subir ao palco.
-- Numa janela anônima, o navegador não sugere endereços do histórico.
+- Airflow dispara o main_*.py; execução manual: python main_.py --procdate YYYYMMDD.
+- Builders em jgdata/datasets/ transformam os dados.
+- initDataset() decide se precisa rodar backfill, via executeBuild().
+- O commit no Iceberg vira um snapshot.
+-->
+
+---
+
+<!-- _class: light logo-tr -->
+
+<style scoped>
+section { --logo: url("img/logo_apache_iceberg.png"); }
+</style>
+
+## Builders com Decoradores
+
+```python
+@DataLakeTable(
+    dataset="precos", name="fechamento"
+)
+def build(procdate):
+    ...
+```
+
+<!--
+- @DataLakeCache e @DataLakeTable registram o builder no SchemaRegistry.
+- FileLock em /var/tmp/iceberg/{table} serializa as escritas do Spark.
+-->
+
+---
+
+<!-- _class: duas-colunas light logo-br -->
+
+<style scoped>
+section { --logo: url("img/logo_apache_iceberg.png"); }
+</style>
+
+## Dois Catálogos
+
+### cache (jg_datacache)
+
+- Chave `dataset.tabela.mk1`
+- S3: `{root}/cache/{dataset}/{name}/`
+
+### lake (jg_datalake)
+
+- Chave `{região}.tabela`
+- S3: `{root}/lake/{region}/{name}/`
+
+---
+
+<!-- _class: light logo-tr -->
+
+<style scoped>
+section { --logo: url("img/logo_apache_iceberg.png"); }
+</style>
+
+## Perfil Define o Modo de Escrita
+
+| Perfil | Partição/Freq | Modo |
+|---|---|---|
+| Série diária | date/daily | append |
+| Snapshot/SCD | blob/latest | overwrite_all |
+| Reenvio de arquivo | — | overwrite_file |
+| Idempotente | — | upsert + joinkey |
+
+<!--
+- Cada dataset é descrito num TOML em conf/datasets/*.toml.
+-->
+
+---
+
+<!-- _class: secao light -->
+<!-- _paginate: false -->
+<!-- _footer: "" -->
+
+# _02_ Snowflake e dbt
+
+<!--
+- Snowflake, dbt e o Datapipe.
 -->
 
 ---
 
 <!-- _class: duas-colunas light -->
 
-## Um ensaio em voz alta ajuda
+<style scoped>
+section { --logo: url("img/logo_snowflake.png"); }
+</style>
 
-### Ensaiar
+## Datapipe: Config em YAML
 
-- Com cronômetro
-- Com alguém assistindo
-- No computador da palestra
+### Um arquivo por feed
 
-### Cortar
+- `.datapipe.yaml` descreve `raw_data` (S3 + `$DATE`)
+- `table_map`: regex → tabela RAW, formato, colunas
 
-- O que passar do tempo
-- Detalhes que cabem nas anotações
-- Slides que você pula ao ensaiar
+### Sem builder Python
+
+- Mapeamento por posição de coluna
+- `RAW` vira a única fonte da verdade bruta
+
+---
+
+<!-- _class: fluxo light logo-tr -->
+
+<style scoped>
+section { --logo: url("img/logo_snowflake.png"); }
+</style>
+
+## Pipeline de Carga v1
+
+1. `pipeline_rawdata.py` descobre arquivos e envia ao S3
+2. `pipeline_sf_copy.py` roda o COPY INTO
+3. Carrega em `VENDOR_RAW` com metadados automáticos
+4. DAG `jgetl-dbt-*` orquestra tudo via SSH
 
 <!--
-- Ensaiar em voz alta mostra o tempo real e costuma deixar a fala mais solta.
+- Metadados automáticos: filename e start_scan_time.
+- Um pool_dbt limita a concorrência das cargas.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: light logo-br -->
 
-## Imagens acessíveis
+<style scoped>
+section { --logo: url("img/logo_dbt.png"); }
+</style>
 
-![bg right:42%](img/imagem-exemplo.png)
+## Camadas do dbt
 
-- Texto alternativo em toda imagem
-- Legenda curta se a imagem não for óbvia
-- Cor e emoji ajudam, mas não sozinhos
+| Camada | Prefixo | O que faz |
+|---|---|---|
+| Staging | `stage/raw_*` | Limpeza e casts |
+| Integration | `integration/int_*` | Regras de negócio em SQL |
+| Publication | `publication/pub_*` | Views para quem consome |
 
 <!--
-- Cores e emojis comunicam bem, mas não podem ser a única diferença: parte do público tem daltonismo, baixa visão ou usa leitor de tela.
-- Junte a cor a um rótulo ou ícone: em vez de uma bolinha verde e uma vermelha, escreva também “passou” e “falhou”.
-- Todo texto do modelo tem contraste de 4,5:1 ou mais com o fundo. Ao usar outras cores, confira em webaim.org/resources/contrastchecker.
+- Consumidores só leem publication, nunca RAW diretamente.
+- sources/*.yml liga os models às tabelas RAW.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: secao light -->
+<!-- _paginate: false -->
+<!-- _footer: "" -->
 
-## Falar com a sala
-
-![bg left:42%](img/imagem-exemplo.png)
-
-- Olhar para o público, se for confortável
-- As anotações do slide como apoio
-- Apontar com palavras, não com o mouse
+# _03_ G2 · dp_batch Atual
 
 <!--
-- As anotações aparecem só para você na visão de apresentação. Olhar as anotações no palco é normal.
-- No HTML exportado, aperte P: a visão de apresentação mostra as anotações, o próximo slide e o cronômetro.
--->
-
----
-
-<!-- _class: light -->
-
-## Código com cores
-
-```python
-@dataclass
-class Palestra:
-    titulo: str
-    duracao_min: int = 25
-
-    def cabe_no_slot(self, slot_min: int) -> bool:
-        # Reserva 5 minutos para perguntas
-        return self.duracao_min + 5 <= slot_min
-```
-
-**Prefere fundo escuro para o código?** Use o tema Monokai e deixe a fonte bem grande.
-
-<!--
-- Para código em fundo escuro, veja as anotações do slide “Código com cores”, na parte escura.
--->
-
----
-
-<!-- _class: light -->
-
-> <mark>Pessoas</mark> &gt; Tecnologia
-
-Comunidade Python Brasil, 2016
-
-<!--
-- No fundo branco, destaque a palavra principal com o marca-texto verde limão, <mark>palavra</mark>, e mantenha o texto preto.
-- O lema da comunidade Python Brasil desde 2016.
--->
-
----
-
-<!-- _class: frase light -->
-
-# Menos texto, letra maior.
-
-<!--
-- Com menos texto no slide, cabe uma letra maior, e o público tende a olhar mais para você.
--->
-
----
-
-<!-- _class: destaque light -->
-
-## Fale de um jeito que acolha
-
-- Mostre o passo a passo em vez de dizer que é fácil
-- Explique cada sigla na primeira vez
-- Pergunte quem já usou em vez de supor
-
-<!--
-- O painel verde limão guarda a mensagem que a sala não pode perder, com até quatro tópicos curtos ao lado.
-- Para quem está começando, “é só” e “todo mundo sabe” soam como “você deveria saber”.
-- Para muita gente, a Python Brasil é a primeira conferência; um exemplo do dia a dia ajuda quem chegou agora.
--->
-
----
-
-<!-- _class: cartoes light -->
-
-## Depois da palestra
-
-1. **Anotações** Anote o que funcionou, para a próxima palestra.
-2. **Conversa** Fique por perto: muitas perguntas aparecem no corredor.
-3. **Descanso** Aproveite o resto do evento. Você mereceu.
-
-<!--
-- Anotar logo depois o que funcionou ajuda na próxima palestra.
-- Cansaço depois de palestrar é normal: descanse e aproveite o resto do evento.
--->
-
----
-
-<!-- _class: palestrante light -->
-
-![Foto de exemplo](img/foto-exemplo.png)
-
-# Seu nome aqui
-
-### Pronomes, cargo e comunidade
-
-- Onde o público encontra você
-- Três fatos, não um currículo
-- Uma foto recente
-
-<!--
-- Com os pronomes no slide, quem cita a sua palestra acerta como se referir a você.
+- dp_batch, a arquitetura atual.
 -->
 
 ---
 
 <!-- _class: fluxo light -->
 
-## Do rascunho ao palco
+## Ingestão no dp_batch
 
-1. Escrever em Markdown
-2. Ensaiar em voz alta
-3. Exportar em PDF
-4. Apresentar
+1. `sftp_ingest` traz o arquivo do fornecedor
+2. Grava em S3 Raw, particionado ao estilo Hive
+3. `MetadataService` registra ingest_id e idempotência
+4. Buckets separados para dev e prod
 
 <!--
-- Uma lista numerada vira caixas com setas; o último passo leva o limão.
-- De três a cinco passos cabem numa linha. Para um fluxo com ramificações, divida em dois slides.
+- A ingestão ainda não conhece o Snowflake.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: light logo-tr -->
 
-## Versão do Python que você usa (%)
+<style scoped>
+section { --logo: url("img/logo_python.png"); }
+</style>
 
-![Gráfico de barras com dados de exemplo: Python 3.10 8%, 3.11 15%, 3.12 29%, 3.13 33% e 3.14 15%](img/grafico-exemplo-claro.png)
+## Preprocess com Polars
 
-Dados de exemplo. Para trocar os dados, veja as anotações deste slide.
+```python
+Column(
+    name_in_file="PRECO",
+    name_in_snowflake="preco",
+    snowflake_type=SnowflakeTyping.FLOAT,
+    polars_type=PolarsTyping.FLOAT,
+)
+```
 
 <!--
-- Para trocar os dados, veja as anotações do slide “Versão do Python que você usa”, na parte escura.
-- Escreva os números do gráfico no texto alternativo, para leitores de tela.
+- CsvReader (lazy) → transforma → Parquet.
+- orchestrate_preprocess usa SCHEMA_BY_DATASET para tipar cada coluna.
+-->
+
+---
+
+<!-- _class: fluxo light -->
+
+<style scoped>
+section { --logo: url("img/logo_airflow.jpg"); }
+</style>
+
+## Orquestração: Airflow + Kubernetes
+
+1. `@task.kubernetes` roda ingest/preprocess em pods isolados
+2. COPY INTO grava no schema `*_DP_BATCH`
+3. `KubernetesPodOperator` roda `dbt run --select +tag:dataset+`
+4. `task_factory.make_validation_task` garante testes com Elementary
+
+<!--
+- As tags do dbt ligam cada dataset à sua DAG, ex. +tag:ice_mft_futures+.
 -->
 
 ---
@@ -636,25 +470,61 @@ Dados de exemplo. Para trocar os dados, veja as anotações deste slide.
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
-# Valeu!
+# Perguntas?
 
-**Seu nome aqui**
-_@seu_usuario_
-_voce@exemplo.com.br_
+**Gabu Bellon**
+_@gabubellon_
+_bllon.co_
 
-![QR code para 2026.pythonbrasil.org.br](img/qr.png)
+![QR code para bllon.co](img/qr.png)
 
-Troque pelo seu QR code: contato, slides ou site
+gabubellon.me · loucuradevaneia.com
 
 <!--
-- Nas perguntas, repita cada pergunta no microfone, para a sala e a gravação.
-- “Não sei, posso ver e te respondo depois” é uma boa resposta. Uma pergunta que desrespeita o código de conduta não precisa de resposta.
-- Da organização: ficamos muito felizes por ter você na Python Brasil 2026. Conte com a gente: estamos aqui para apoiar você e torcer por você.
+- Gerar o QR code real: uv run scripts/qr.py https://bllon.co (troca img/qr.png).
 -->
 
 ---
 
-<!-- _class: figurinhas -->
+<!-- _class: secao light -->
+<!-- _paginate: false -->
+<!-- _footer: "" -->
+
+# Extra
+
+<!--
+- Slides de apoio, caso dê tempo ou surjam perguntas sobre catálogos.
+-->
+
+---
+
+<!-- _class: light logo-tr -->
+
+<style scoped>
+section { --logo: url("img/logo_apache_iceberg.png"); }
+table { width: 100%; table-layout: fixed; font-size: 22px; }
+th, td { padding: 6px 10px; word-wrap: break-word; }
+</style>
+
+## Qual Catálogo Usar?
+
+| Catálogo | Prós | Contras | Produção |
+|---|---|---|---|
+| REST | Padrão aberto, portável | Precisa de um serviço | Recomendado |
+| Glue / DynamoDB | Gerenciado na AWS | Preso à AWS | Recomendado (AWS) |
+| JDBC | Usa banco já existente | Menos padrão que o REST | Recomendado |
+| Nessie | Branch e auditoria | Mais uma peça pra operar | P/ governança |
+| Hive | Reaproveita metastore | Prende ao Hive | Ok se já tem Hive |
+| Hadoop | Simples, só filesystem | Exige rename atômico | <mark>Não recomendado</mark> |
+
+<!--
+- HadoopCatalog não suporta rename de tabela e exige rename atômico do filesystem: evite em object stores como S3.
+- REST Catalog é hoje o protocolo padrão da comunidade Iceberg, por isso costuma ser a escolha mais segura.
+-->
+
+---
+
+<!-- _class: figurinhas light -->
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
@@ -662,14 +532,9 @@ Troque pelo seu QR code: contato, slides ou site
 
 ### Dazumbanho! Chegasse ao fim, ixtepô!
 
-![w:290](img/lockup-on-dark.png) ![w:190](img/sticker-witch.png) ![w:220](img/sticker-mago-ola.png) ![w:130](img/sticker-mago.png) ![w:120](img/magia-explosao.png)
+![w:290](img/lockup-on-light.png) ![w:190](img/sticker-witch.png) ![w:220](img/sticker-mago-ola.png) ![w:130](img/sticker-mago.png) ![w:120](img/magia-explosao.png)
 
 ![w:280](img/logo-assinatura.png) <span class="circulo">olha aqui</span> <mark>marca-texto</mark> ![w:96](img/icone-seta.png) ![w:96](img/icone-codigo.png)
 
 Identidade visual de Ana Terhorst, [anaterhorstdesign.com](https://anaterhorstdesign.com). Valeu, Ana!
-
-<!--
-- Copie a linha da figurinha para o seu slide; o número em w:190 define a largura em pixels.
-- A figurinha marca-texto é um realce: troque a palavra dela, ou use <mark>palavra</mark> numa palavra sua. O círculo pixelado é <span class="circulo">palavra</span>.
-- Uma figurinha por slide costuma bastar.
--->
+</content>

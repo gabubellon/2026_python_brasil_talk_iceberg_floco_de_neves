@@ -268,6 +268,67 @@ section.secao::before {
   background: var(--lockup) left bottom / contain no-repeat;
 }
 
+/* ---------- logo d'água num canto ----------
+ * Um logo grande e apagado, de fundo. Defina a imagem com --logo
+ * num <style scoped> e escolha o canto com uma destas classes:
+ * <!-- _class: cartoes light logo-tr -->
+ * <style scoped>section { --logo: url("img/logo_x.png"); }</style>
+ */
+section.logo-tr::before,
+section.logo-tl::before,
+section.logo-br::before,
+section.logo-bl::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: var(--logo) center / contain no-repeat;
+  opacity: 0.55;
+}
+
+section.logo-tr::before { top: -40px; right: -40px; }
+section.logo-tl::before { top: -40px; left: -40px; }
+section.logo-br::before { bottom: -40px; right: -40px; }
+section.logo-bl::before { bottom: -40px; left: -40px; }
+
+/* ---------- figurinha colada entre cartões ----------
+ * Uma figurinha rotacionada, como se alguém tivesse colado no papel.
+ * Defina --fig (e, se quiser, --fig-rot) num <style scoped> e escolha o lado:
+ * <!-- _class: cartoes light fig-esq -->
+ * <style scoped>section { --fig: url("img/sticker-x.png"); --fig-rot: -12deg; }</style>
+ */
+section.cartoes.fig-esq::after,
+section.cartoes.fig-dir::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  width: 110px;
+  height: 110px;
+  background: var(--fig) center / contain no-repeat;
+  transform: translate(-50%, -50%) rotate(var(--fig-rot, 0deg));
+}
+
+section.cartoes.fig-esq::after { left: 33%; }
+section.cartoes.fig-dir::after { left: 66%; }
+
+/* ---------- nota flutuante ----------
+ * Uma caixa pequena de explicação sobre um ![bg], de um lado do slide.
+ * <div class="nota-flutuante esq">...</div> ou "dir"
+ */
+.nota-flutuante {
+  position: absolute;
+  top: 420px;
+  width: 340px;
+  background: var(--card);
+  border: 1px solid var(--card-outline);
+  border-radius: 14px;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.nota-flutuante.esq { left: 70px; }
+.nota-flutuante.dir { right: 70px; }
+
 /* ---------- capa ---------- */
 
 section.capa {
@@ -561,6 +622,61 @@ section.fluxo li + li::before {
 
 /* O último passo leva o limão, como resultado do fluxo. */
 section.fluxo li:last-child {
+  background: var(--limao);
+  border-color: var(--limao);
+  color: var(--preto);
+  font-weight: 700;
+}
+
+/* ---------- fluxo vertical ----------
+ * Mesma ideia do fluxo, só que os passos empilham de cima pra baixo
+ * em vez de lado a lado. Pensada pra caber ao lado de uma imagem
+ * (![bg left/right]), por isso nasce mais compacta.
+ * ## Título
+ * 1. Primeiro passo
+ * 2. Segundo passo
+ * 3. Terceiro passo
+ */
+section.fluxo-vertical ol {
+  list-style: none;
+  padding: 0;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+  font-size: 22px;
+}
+
+section.fluxo-vertical li {
+  position: relative;
+  flex: 1;
+  margin: 0;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--card);
+  border: 2px solid var(--card-outline);
+  border-radius: 14px;
+}
+
+/* A seta fica no vão entre as caixas, apontando pra baixo. */
+section.fluxo-vertical li + li::before {
+  content: "↓";
+  position: absolute;
+  left: 50%;
+  top: -34px;
+  transform: translateX(-50%);
+  font-family: "Cascadia Mono", monospace;
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--accent);
+}
+
+/* O último passo leva o limão, como resultado do fluxo. */
+section.fluxo-vertical li:last-child {
   background: var(--limao);
   border-color: var(--limao);
   color: var(--preto);

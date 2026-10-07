@@ -1,0 +1,17 @@
+{
+  "servers": {
+    "datamate": {
+      "type": "stdio",
+      "command": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)",
+      "args": [
+        "/Users/gbellon/.vscode/extensions/altimateai.vscode-altimate-mcp-server-0.11.0-darwin-arm64/dist/datamate-cli.js",
+        "start-stdio"
+      ],
+      "env": {
+        "ALTIMATE_EXTENSION_RPC": "/var/folders/41/l9zw28h121ncmk4m8xvqg7nw0000gn/T/altimate-mcp-88483.sock",
+        "ELECTRON_RUN_AS_NODE": "1"
+      },
+      "updatedAt": "2026-10-07T20:35:35.691Z"
+    }
+  }
+}
