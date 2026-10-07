@@ -16,9 +16,9 @@ Os slides de exemplo existem em três idiomas, com as mesmas dicas:
 
 | Idioma | Arquivo | Ver |
 |---|---|---|
-| Português | `slides.md` | [no navegador](https://rodbv.github.io/pybr2026-marp/) · [PDF](https://rodbv.github.io/pybr2026-marp/slides.pdf) |
-| English | `slides.en.md` | [no navegador](https://rodbv.github.io/pybr2026-marp/en.html) · [PDF](https://rodbv.github.io/pybr2026-marp/slides.en.pdf) |
-| Español | `slides.es.md` | [no navegador](https://rodbv.github.io/pybr2026-marp/es.html) · [PDF](https://rodbv.github.io/pybr2026-marp/slides.es.pdf) |
+| Português | `slides.md` | [no navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.pdf) |
+| English | `slides.en.md` | [no navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/en.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.en.pdf) |
+| Español | `slides.es.md` | [no navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/es.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.es.pdf) |
 
 ![Os 38 slides de exemplo, nas versões escura e clara](docs/overview.png)
 
