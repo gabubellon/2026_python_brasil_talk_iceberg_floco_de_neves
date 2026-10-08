@@ -85,7 +85,7 @@ img { border-radius: 165px; }
 
 <!-- _class: destaque light -->
 
-## Funcionar não significa escalabilidade.
+## <div align=center>Funcionar <br>X Escalabilidade</div>
 
 - Crescimento X Governança X Manutenção
 - Melhor Arqutetura X Arquitetura Que Entrega
@@ -97,7 +97,7 @@ img { border-radius: 165px; }
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
-# _00_ Ferramentas
+# _01_ Ferramentas
 
 <!--
 - Como tudo começou: o monólito Apache Iceberg.
@@ -483,7 +483,7 @@ CREATE CATALOG INTEGRATION meu_catalogo
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
-# _01_ Monólito Iceberg
+# _02_ Monólito Iceberg
 
 <!--
 - Como tudo começou: o monólito Apache Iceberg.
@@ -543,7 +543,7 @@ def build(procdate):
 <!-- _class: light -->
 ## Catálogo Rígido 
 
-* <span class="circulo">S3 -> Local</span> virtual
+* <span class="circulo">S3 -> Local</span> vir
 * PySpark <span class="circulo">UM NÓ</span> por execução
 * Manifesto com Caminho <span class="circulo">RÍGIDO</span> (/home/xpto/file.parquet)
 * <span class="circulo">UPDATE</span> em Partições
@@ -561,7 +561,7 @@ def build(procdate):
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
-# _02_ Snowflake e dbt
+# _03_ Snowflake e DBT
 
 <!--
 - Snowflake, dbt e o Datapipe.
@@ -683,7 +683,7 @@ Fazer de novo !
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
-# _03_ Enxugando Gelo
+# _04_ Enxugando Gelo
 
 <!--
 - Snowflake, dbt e o Datapipe.
