@@ -317,7 +317,7 @@ section.cartoes.fig-dir::after { left: 66%; }
  */
 .nota-flutuante {
   position: absolute;
-  top: 420px;
+  top: 300px;
   width: 340px;
   background: var(--card);
   border: 1px solid var(--card-outline);
@@ -327,7 +327,7 @@ section.cartoes.fig-dir::after { left: 66%; }
 }
 
 .nota-flutuante.esq { left: 70px; }
-.nota-flutuante.dir { right: 70px; }
+.nota-flutuante.dir { right: 100px; }
 
 /* ---------- capa ---------- */
 
