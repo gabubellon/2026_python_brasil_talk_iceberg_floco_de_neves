@@ -15,13 +15,9 @@ title: O Iceberg Foi pro Snowflake
 
 # O Iceberg Foi pro Snowflake
 
-A jornada real de uma migração de dados em produção
+Do monolito com Apache Iceberg ao Snowflake
 
 **Gabu Bellon** · @gabubellon
-
-<!--
-- Adaptado da versão apresentada na Caipyra 2026.
--->
 
 ---
 
@@ -30,6 +26,7 @@ A jornada real de uma migração de dados em produção
 # O design destes slides teve apoio de IA.
 
 O conteúdo técnico é todo do palestrante.
+As imagens são de banco de imagens 
 
 ---
 
@@ -39,9 +36,9 @@ O conteúdo técnico é todo do palestrante.
 img { border-radius: 165px; }
 </style>
 
-![Foto de Gabu Bellon](img/util/202506_avatar.jpg)
+![Foto de Gabu Bellon](img/fotos/palestrante.jpg)
 
-![bg opacity:0.3](img/util/202506_avatar.jpg)
+![bg opacity:0.3](img/fotos/palestrante.jpg)
 
 # Gabu Bellon
 
@@ -108,7 +105,7 @@ img { border-radius: 165px; }
 <!-- _class: cartoes light fig-dir -->
 
 <style scoped>
-section { --fig: url("img/sticker-mago.png"); --fig-rot: 9deg; }
+section { --fig: url("img/figurinhas/mago.png"); --fig-rot: 9deg; }
 </style>
 
 ![bg opacity:0.3 fit:40% 49%](img/logos/apache-airflow.png)
@@ -139,7 +136,7 @@ def meu_dag():
 meu_dag()
 ```
 
-![bg right:30% contain](img/diagramas/airflow-basic-dag.png)
+![bg right:30% contain](img/diagramas/airflow-dag.png)
 
 <!--
 - Uma DAG (grafo acíclico dirigido) reúne tarefas com dependências e relações que dizem como rodam.
@@ -156,7 +153,7 @@ meu_dag()
 <!-- _class: cartoes light fig-esq -->
 
 <style scoped>
-section { --fig: url("img/sticker-mago-ola.png"); --fig-rot: 8deg; }
+section { --fig: url("img/figurinhas/mago-ola.png"); --fig-rot: 8deg; }
 </style>
 
 ![bg opacity:0.3 fit:40% 49%](img/logos/snowflake.png)
@@ -172,7 +169,7 @@ section { --fig: url("img/sticker-mago-ola.png"); --fig-rot: 8deg; }
 
 ## Snowflake
 
-![bg 90%](img/diagramas/snowflake_data.png)
+![bg 90%](img/diagramas/snowflake-dados.png)
 
 ---
 
@@ -180,7 +177,7 @@ section { --fig: url("img/sticker-mago-ola.png"); --fig-rot: 8deg; }
 <!-- _class: cartoes light fig-dir -->
 
 <style scoped>
-section { --fig: url("img/sticker-witch.png"); --fig-rot: -7deg; }
+section { --fig: url("img/figurinhas/bruxa.png"); --fig-rot: -7deg; }
 </style>
 
 ![bg opacity:0.3 fit:40% 49%](img/logos/dbt.png)
@@ -214,7 +211,7 @@ models:
 <!-- _class: cartoes light fig-esq -->
 
 <style scoped>
-section { --fig: url("img/sticker-witch.png"); --fig-rot: -12deg; }
+section { --fig: url("img/figurinhas/bruxa.png"); --fig-rot: -12deg; }
 </style>
 
 ![bg opacity:0.3 fit:40% 49%](img/logos/apache-iceberg.png)
@@ -232,9 +229,9 @@ section { --fig: url("img/sticker-witch.png"); --fig-rot: -12deg; }
 
 ## Apache Iceberg
 
-![bg contain](img/util/library.jpg)
+![bg contain](img/fotos/biblioteca.jpg)
 
-![bg contain](img/util/files.jpg)
+![bg contain](img/fotos/arquivos.jpg)
 
 ---
 
@@ -265,7 +262,7 @@ section { --fig: url("img/sticker-witch.png"); --fig-rot: -12deg; }
 <strong>Snapshots</strong><br>Cada commit vira um snapshot novo: dá pra marcar (tags) e voltar no tempo.
 </div>
 
-![bg left:58% contain](img/diagramas/iceberg-historical-snapshot-tag.png)
+![bg left:58% contain](img/diagramas/iceberg-snapshot-tag.png)
 
 <!--
 - Cada commit do Iceberg vira um snapshot novo na linha do tempo.
@@ -525,7 +522,7 @@ section { justify-content: center; align-items: center; }
 img:not([alt~="bg"]) { display: block; margin: 0 auto; }
 </style>
 
-![bg fit](img/util/monolito.jpg)
+![bg fit](img/fotos/monolito.jpg)
 
 ![w:150 Logo do Python](img/logos/python.png)
 
@@ -579,7 +576,7 @@ def build(procdate):
 <mark>ANTI-PATTERN</mark>
 </div>
 
-![bg right:30%](img/sticker-mago.png)
+![bg right:30%](img/figurinhas/mago.png)
 
 
 ---
@@ -637,7 +634,7 @@ SELECT * FROM pedidos;
 
 ## Solução
 
-![bg fit](img/util/esculttura.jpg)
+![bg fit](img/fotos/escultura.jpg)
 
 
 
@@ -657,7 +654,7 @@ SELECT * FROM pedidos;
 
 ## Ingestão em Lote
 
-![bg fit ](img/diagrama-ingestao.png)
+![bg fit ](img/diagramas/ingestao.png)
 
 
 <!--
@@ -684,7 +681,7 @@ SELECT * FROM pedidos;
 
 ## Camadas do dbt
 
-![bg fit ](img/diagrama-camadas.png)
+![bg fit ](img/diagramas/camadas.png)
 
 <!--
 - Mesma ideia do slide anterior, em diagrama.
@@ -697,7 +694,7 @@ SELECT * FROM pedidos;
 
 ## Orquestração: Airflow + Kubernetes
 
-![bg fit ](img/diagrama-orquestracao.png)
+![bg fit ](img/diagramas/orquestracao.png)
 
 <!--
 - Mesma ideia do slide anterior, em diagrama.
@@ -710,7 +707,7 @@ SELECT * FROM pedidos;
 
 ## O Iceberg derreteu
 
-![bg fit ](img/diagrama-derreteu.png)
+![bg fit ](img/diagramas/derreteu.png)
 
 <!--
 - Versão em diagrama do slide anterior, para comparar.
@@ -733,7 +730,7 @@ SELECT * FROM pedidos;
 
 <!-- _class: light -->
 
-![bg left:42%](img/util/gelo02.jpg)
+![bg left:42%](img/fotos/gelo02.jpg)
 
 <style scoped>
 section { justify-content: center; }
@@ -753,7 +750,7 @@ vira <mark>um monte de gelo</mark>.
 
 <!-- _class: light -->
 
-![bg right:42%](img/util/gelo01.jpg)
+![bg right:42%](img/fotos/gelo01.jpg)
 
 <style scoped>
 section { justify-content: center; }
@@ -773,7 +770,7 @@ Governança sem controle
 
 <!-- _class: light -->
 
-![bg left:42%](img/util/gelo04.jpg)
+![bg left:42%](img/fotos/gelo04.jpg)
 
 <style scoped>
 section { justify-content: center; }
@@ -876,9 +873,9 @@ Column(
 
 ### Dazumbanho! Chegasse ao fim, ixtepô!
 
-![w:290](img/lockup-on-light.png) ![w:190](img/sticker-witch.png) ![w:220](img/sticker-mago-ola.png) ![w:130](img/sticker-mago.png) ![w:120](img/magia-explosao.png)
+![w:290](img/marca/lockup-claro.png) ![w:190](img/figurinhas/bruxa.png) ![w:220](img/figurinhas/mago-ola.png) ![w:130](img/figurinhas/mago.png) ![w:120](img/figurinhas/explosao.png)
 
-![w:280](img/logo-assinatura.png) <span class="circulo">olha aqui</span> <mark>marca-texto</mark> ![w:96](img/icone-seta.png) ![w:96](img/icone-codigo.png)
+![w:280](img/marca/logo-assinatura.png) <span class="circulo">olha aqui</span> <mark>marca-texto</mark> ![w:96](img/marca/icone-seta.png) ![w:96](img/marca/icone-codigo.png)
 
 Identidade visual de Ana Terhorst, [anaterhorstdesign.com](https://anaterhorstdesign.com). Valeu, Ana!
 </content>

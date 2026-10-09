@@ -17,8 +17,6 @@ Os slides de exemplo existem em três idiomas, com as mesmas dicas:
 | Idioma | Arquivo | Ver |
 |---|---|---|
 | Português | `slides.md` | [no navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.pdf) |
-| English | `slides.en.md` | [no navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/en.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.en.pdf) |
-| Español | `slides.es.md` | [no navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/es.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.es.pdf) |
 
 ![Os 38 slides de exemplo, nas versões escura e clara](docs/overview.png)
 
@@ -28,7 +26,6 @@ Os slides de exemplo existem em três idiomas, com as mesmas dicas:
 2. No repositório novo, abra **Settings > Pages** e escolha **GitHub Actions** em **Source**.
 3. Na aba **Actions**, abra a execução "pages", que falhou porque o Pages ainda estava desligado, e clique em **Re-run all jobs**. A partir daí, cada push na `main` publica os slides e os PDFs.
 4. Na página do repositório, clique na engrenagem de **About** e marque **Use your GitHub Pages website**. O link dos seus slides fica no topo do repositório.
-5. Fique só com o arquivo do idioma da sua palestra. Se ela for em português, apague `slides.en.md` e `slides.es.md`. Se for em inglês ou espanhol, apague os outros dois e renomeie o seu para `slides.md`. Assim a palestra sai na raiz do site.
 
 Na sua cópia, os links da tabela acima apontam para o seu site. Os slides ficam em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/` e o PDF em `.../slides.pdf`. Sem o Pages, o PDF também fica para baixar em cada execução da aba Actions, no artefato **slides-pdf**.
 

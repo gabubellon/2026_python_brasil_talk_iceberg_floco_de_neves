@@ -4,10 +4,10 @@ Este repositório é um modelo de slides da Python Brasil 2026 em Markdown, com 
 
 ## Arquivos
 
-- `slides.md`: a apresentação em português. `slides.en.md` e `slides.es.md` são a mesma apresentação em inglês e em espanhol. A pessoa fica só com o arquivo do idioma da palestra, renomeado para `slides.md`, para a palestra sair na raiz do site. Os slides de exemplo mostram todos os layouts, cada um com dicas nas anotações.
+- `slides.md`: a apresentação, o único arquivo de slides.
 - `pybr2026.css`: o tema. Não mude o tema para resolver um slide: use as classes abaixo. Mude o tema só quando a pessoa pedir.
-- `img/`: logos, figurinhas, imagens de exemplo, o gráfico e o QR code. As imagens dos slides ficam aqui. As imagens `*-exemplo*.png` são caixas cinza que marcam o lugar de uma imagem: troque pela imagem da pessoa, nunca use uma delas na palestra.
-- `scripts/grafico.py` e `scripts/qr.py`: geram o gráfico e o QR code nas cores da marca (`uv run scripts/qr.py https://endereco`). Para um gráfico com os dados da pessoa, troque `ROTULOS` e `VALORES` no script, ou copie o script para um gráfico novo.
+- `img/`: as imagens dos slides, por pasta: `marca/` (logo, marca-d'água, ícones), `figurinhas/`, `logos/` (tecnologias), `diagramas/`, `fotos/`, `graficos/` e `qr.png`. Imagem que nenhum slide usa é apagada.
+- `scripts/diagramas/`: um script por diagrama de `img/diagramas/`, com `base.py` em comum. `scripts/grafico.py` e `scripts/qr.py`: geram o gráfico e o QR code nas cores da marca (`uv run scripts/qr.py https://endereco`). `make help` lista os atalhos, incluindo `make html` e `make pdf`. Para um gráfico com os dados da pessoa, troque `ROTULOS` e `VALORES` no script, ou copie o script para um gráfico novo.
 
 ## Como um slide é escrito
 
@@ -42,7 +42,7 @@ As anotações são comentários HTML no fim do slide, com dois ou três tópico
 | `destaque` | `## Mensagem` (vai no painel limão) e até quatro tópicos curtos |
 | `imagem-cheia` | `![bg](img/foto.png)` e um parágrafo de legenda com o crédito |
 | `encerramento` | `# Perguntas?`, contatos (`_@usuario_`), `![QR code para ...](img/qr.png)` e o endereço na linha seguinte. Use `_paginate: false` e `_footer: ""` |
-| `figurinhas` | Imagens com largura, como `![w:200](img/sticker-witch.png)` |
+| `figurinhas` | Imagens com largura, como `![w:200](img/figurinhas/bruxa.png)` |
 | `light` | Combina com qualquer outra: `<!-- _class: frase light -->` |
 
 Texto ao lado de uma imagem usa a sintaxe do Marp: `![bg right:42%](img/x.png)` ou `![bg left:42%](img/x.png)`.
@@ -66,7 +66,6 @@ Texto ao lado de uma imagem usa a sintaxe do Marp: `![bg right:42%](img/x.png)` 
 - O Marp lê algumas palavras soltas do texto alternativo como filtros de imagem: `blur`, `brightness`, `contrast`, `drop-shadow`, `grayscale`, `hue-rotate`, `invert`, `opacity`, `saturate` e `sepia`. Em inglês, troque essas palavras por outras no texto alternativo: "contrast" muda as cores do gráfico.
 - O que não cabe no slide vai para as anotações.
 - Escreva no idioma do arquivo, indicado em `lang:` no topo: `pt-BR`, `en` ou `es`. Use linguagem neutra de gênero quando possível ("pessoa palestrante", "o público", "quem assiste"; "the speaker", "people"; "la persona que presenta", "el público").
-- Nas versões em inglês e em espanhol, as imagens com texto têm o sufixo do idioma, como `img/imagem-exemplo-en.png`. O gráfico de exemplo é o mesmo nos três idiomas. O lema `Pessoas > Tecnologia` e a saudação "Dazumbanho!" ficam em português nos três idiomas.
 - O tom é de dica, não de regra: apoio, sem cobrança e sem prometer resultado. Evite "é só", "é fácil" e "todo mundo sabe".
 - Conte mais ou menos 1 minuto por slide, depois de separar uns 5 minutos para perguntas. Pergunte a duração da palestra se não souber.
 

@@ -17,8 +17,6 @@ Las diapositivas de ejemplo están disponibles en tres idiomas, con los mismos c
 | Idioma | Archivo | Ver |
 |---|---|---|
 | Português | `slides.md` | [en el navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.pdf) |
-| English | `slides.en.md` | [en el navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/en.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.en.pdf) |
-| Español | `slides.es.md` | [en el navegador](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/es.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.es.pdf) |
 
 ![Las 38 diapositivas de ejemplo, en las versiones oscura y clara](docs/overview.png)
 
@@ -28,7 +26,6 @@ Las diapositivas de ejemplo están disponibles en tres idiomas, con los mismos c
 2. En el repositorio nuevo, abre **Settings > Pages** y elige **GitHub Actions** en **Source**.
 3. En la pestaña **Actions**, abre la ejecución "pages", que falló porque Pages todavía no estaba activado, y haz clic en **Re-run all jobs**. A partir de ahí, cada push a `main` publica las diapositivas y los PDF.
 4. En la página del repositorio, haz clic en el engranaje de **About** y marca **Use your GitHub Pages website**. El enlace a tus diapositivas aparece en la parte superior de la página del repositorio.
-5. Quédate solo con el archivo del idioma de tu charla. Si es en español, borra `slides.md` y `slides.en.md`, y luego cambia el nombre de `slides.es.md` a `slides.md`. Así la charla se publica en la raíz del sitio.
 
 En tu copia, los enlaces de la tabla de arriba apuntan a tu sitio. Las diapositivas quedan en `https://TU-USUARIO.github.io/NOMBRE-DEL-REPOSITORIO/` y el PDF en `.../slides.pdf`. Sin Pages, también puedes descargar el PDF de cada ejecución en la pestaña Actions, en el artefacto **slides-pdf**.
 
@@ -127,7 +124,7 @@ uv run scripts/grafico.py
 
 - El texto del cuerpo mide 36 px en una diapositiva de 1280 px, lo mismo que 20 pt en la plantilla `.pptx`. Para que quien se sienta lejos pueda leer, evita el texto de menos de 32 px (18 pt en el `.pptx`).
 - Todas las combinaciones de colores del tema cumplen el nivel AA de WCAG 2.1. Los colores y el contraste de cada uno están en la [referencia de la plantilla `.pptx`](https://github.com/rodbv/pybr2026-slides/blob/main/docs/referencia.md#cores-e-contraste) (en portugués).
-- El idioma de cada documento está declarado en `lang:` (`es` en `slides.es.md`), para los lectores de pantalla.
+- El idioma de cada documento está declarado en `lang:`, para los lectores de pantalla.
 - Escribe el texto alternativo entre los corchetes de cada imagen: `![Gráfico de barras: ...](img/grafico.png)`.
 
 ## ¿Encontraste un problema?

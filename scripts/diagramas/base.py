@@ -14,7 +14,7 @@ OFF_WHITE = "#E8F4BA"
 LIMAO = "#B7FF06"
 VIOLETA = "#BF2EB2"
 
-IMG = Path(__file__).resolve().parent.parent / "img"
+IMG = Path(__file__).resolve().parent.parent.parent / "img"
 
 plt.rcParams["font.family"] = ["Roboto", "DejaVu Sans"]
 fig, ax = plt.subplots(figsize=(15, 5), dpi=150)
@@ -112,7 +112,7 @@ def icone_floco(cx, cy):
 
 def foto(arquivo, cx, cy, r, legenda):
     """Foto quadrada (recorte central) num círculo com contorno preto."""
-    img = plt.imread(IMG / "util" / arquivo)
+    img = plt.imread(IMG / "fotos" / arquivo)
     h, w = img.shape[:2]
     lado = min(h, w)
     img = img[(h - lado) // 2 : (h + lado) // 2, (w - lado) // 2 : (w + lado) // 2]
@@ -141,4 +141,4 @@ def seta(x1, y1, x2, y2):
 
 
 def salvar(nome):
-    fig.savefig(IMG / nome, transparent=True, bbox_inches="tight", pad_inches=0.1)
+    fig.savefig(IMG / "diagramas" / nome, transparent=True, bbox_inches="tight", pad_inches=0.1)

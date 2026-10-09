@@ -3,10 +3,10 @@
 # ///
 """Gera o diagrama da orquestração Airflow + Kubernetes (versão clara, fundo transparente).
 
-    uv run scripts/diagrama_orquestracao.py
+    uv run scripts/diagramas/orquestracao.py
 """
 
-from diagrama_base import *  # noqa: F403
+from base import *  # noqa: F403
 
 caixa(2, 10, 28, 30, "TASK", "@task.kubernetes", icone_pod)
 caixa(41, 10, 28, 30, "COPY INTO", "com BATCH", icone_copiar)
@@ -16,4 +16,4 @@ seta(31, 25, 40, 25)
 seta(70, 25, 79, 25)
 seta(109, 25, 118, 25)
 
-salvar("diagrama-orquestracao.png")
+salvar("orquestracao.png")

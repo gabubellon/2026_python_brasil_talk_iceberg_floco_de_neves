@@ -3,10 +3,10 @@
 # ///
 """Gera o diagrama da ingestão no dp_batch (versão clara, fundo transparente).
 
-    uv run scripts/diagrama_ingestao.py
+    uv run scripts/diagramas/ingestao.py
 """
 
-from diagrama_base import *  # noqa: F403
+from base import *  # noqa: F403
 
 
 caixa(1, 10, 26, 30, "CARGA", "Sftp/API\nCliente/Fonte", icone_nuvem)
@@ -20,4 +20,4 @@ caixa(131, 1, 18, 22, "PROD", "bucket separado", icone_bucket, compacta=True)
 seta(110, 28, 130, 36)
 seta(110, 22, 130, 14)
 
-salvar("diagrama-ingestao.png")
+salvar("ingestao.png")

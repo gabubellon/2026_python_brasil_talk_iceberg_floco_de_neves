@@ -17,8 +17,6 @@ The example slides come in three languages, with the same tips:
 | Language | File | View |
 |---|---|---|
 | Português | `slides.md` | [in the browser](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.pdf) |
-| English | `slides.en.md` | [in the browser](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/en.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.en.pdf) |
-| Español | `slides.es.md` | [in the browser](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/es.html) · [PDF](https://gabubellon.github.io/2026_python_brasil_talk_iceberg_floco_de_neves/slides.es.pdf) |
 
 ![The 38 example slides, in the dark and light versions](docs/overview.png)
 
@@ -28,7 +26,6 @@ The example slides come in three languages, with the same tips:
 2. In the new repository, open **Settings > Pages** and choose **GitHub Actions** under **Source**.
 3. In the **Actions** tab, open the "pages" run, which failed because Pages was not enabled yet, and click **Re-run all jobs**. From then on, every push to `main` publishes the slides and the PDFs.
 4. On the repository page, click the gear next to **About** and check **Use your GitHub Pages website**. The link to your slides then shows at the top of the repository.
-5. Keep only the file in the language of your talk. If your talk is in Portuguese, delete `slides.en.md` and `slides.es.md`. If it is in English or Spanish, delete the other two files and rename yours to `slides.md`. The talk is then published at the root of the site.
 
 In your copy, the links in the table above point to your own site. The slides are at `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/` and the PDF at `.../slides.pdf`. Without Pages, you can also download the PDF from each run in the Actions tab, in the **slides-pdf** artifact.
 
@@ -127,7 +124,7 @@ uv run scripts/grafico.py
 
 - Body text is 36 px on a 1280 px slide, the same as 20 pt in the `.pptx` template. So that people at the back can read it, avoid text smaller than 32 px (18 pt in the `.pptx`).
 - Every color combination in the theme meets WCAG 2.1 level AA. The colors and the contrast of each one are in the [reference of the `.pptx` template](https://github.com/rodbv/pybr2026-slides/blob/main/docs/referencia.md#cores-e-contraste) (in Portuguese).
-- Each slides file declares its language for screen readers in the `lang:` field at the top. `slides.en.md` uses `en`.
+- Each slides file declares its language for screen readers in the `lang:` field at the top.
 - Write alt text between the brackets of every image: `![Bar chart: ...](img/grafico.png)`.
 
 ## Found a problem?

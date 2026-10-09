@@ -2,3 +2,5 @@ _site/
 slides*.html
 slides*.pdf
 slides*.pptx
+.DS_Store
+__pycache__/

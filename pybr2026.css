@@ -31,8 +31,8 @@
   --rule: var(--off-white);
   --card: #242424;
   --card-outline: #3a3a3a;
-  --lockup: url("img/lockup-on-dark.png");
-  --marca-dagua: url("img/marca-dagua-escuro.png");
+  --lockup: url("img/marca/lockup-escuro.png");
+  --marca-dagua: url("img/marca/marca-dagua-escuro.png");
 }
 
 section {
@@ -60,8 +60,8 @@ section.light {
   --rule: var(--preto);
   --card: var(--off-white);
   --card-outline: #c9d9a0;
-  --lockup: url("img/lockup-on-light.png");
-  --marca-dagua: url("img/marca-dagua-claro.png");
+  --lockup: url("img/marca/lockup-claro.png");
+  --marca-dagua: url("img/marca/marca-dagua-claro.png");
 }
 
 /* ---------- texto ---------- */
@@ -853,7 +853,7 @@ section.figurinhas > p:last-of-type {
   align-items: center;
   justify-content: center;
   padding: 0.5em 0.9em;
-  background: url("img/pixel-circle.png") center / 100% 100% no-repeat;
+  background: url("img/marca/circulo-pixel.png") center / 100% 100% no-repeat;
   font-family: "Cascadia Mono", monospace;
   font-weight: 700;
 }

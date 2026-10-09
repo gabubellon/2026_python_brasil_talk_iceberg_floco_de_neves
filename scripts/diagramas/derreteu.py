@@ -2,15 +2,15 @@
 # dependencies = ["matplotlib"]
 # ///
 """Gera o diagrama do caminho do Iceberg ao Snowflake (versão clara, fundo transparente).
-As fotos ficam em img/util/iceberg_photo.jpg e img/util/snowflake_photo.jpg.
+As fotos ficam em img/fotos/iceberg.jpg e img/fotos/snowflake.jpg.
 
-    uv run scripts/diagrama_derreteu.py
+    uv run scripts/diagramas/derreteu.py
 """
 
-from diagrama_base import *  # noqa: F403
+from base import *  # noqa: F403
 
-foto("iceberg_photo.jpg", 12, 25, 11, "ICEBERG")
-foto("snowflake_photo.jpg", 138, 25, 11, "SNOWFLAKE")
+foto("iceberg.jpg", 12, 25, 11, "ICEBERG")
+foto("snowflake.jpg", 138, 25, 11, "SNOWFLAKE")
 
 caixa(31, 10, 26, 30, "DUCKDB LOCAL", "Manifesto/Parquet", icone_banco)
 caixa(62, 10, 26, 30, "SEM ACESSO", "Manifesto/Parquet", icone_cadeado)
@@ -26,4 +26,4 @@ ax.plot([33, 86], [42.5, 42.5], color=VIOLETA, lw=3, solid_capstyle="round")
 ax.text(106, 45, "SNOWFLAKE", ha="center", va="center", color=VIOLETA, fontsize=12, fontweight="bold")
 ax.plot([95, 117], [42.5, 42.5], color=VIOLETA, lw=3, solid_capstyle="round")
 
-salvar("diagrama-derreteu.png")
+salvar("derreteu.png")
