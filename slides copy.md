@@ -115,9 +115,9 @@ section { --fig: url("img/sticker-mago.png"); --fig-rot: 9deg; }
 
 ## Apache Airflow
 
-1. **O que é** Orquestrador de Rotinas Agendados (DAG)
+1. **O que é** Ferramenta para agendar e rodar tarefas.
 2. **Como funciona** Cada fluxo é uma DAG em código Python.
-3. **No dia a dia** Permite centraliza a execução de rotinas e pipeline de dados 
+3. **No dia a dia** Mostra dependências, falhas e logs num só lugar.
 
 ---
 <!-- _class: light -->
@@ -187,9 +187,9 @@ section { --fig: url("img/sticker-witch.png"); --fig-rot: -7deg; }
 
 ## dbt
 
-1. **O que é** Solução de Ambiente de Dados Completa na nuvem
-2. **Como organiza** Banco de dados, Ferramentes de Dados (Stream,Acesso)
-3. **No dia a dia** Ambinte de dispobilização e analise de dados
+1. **O que é** Ferramenta para transformar dados com SQL.
+2. **Como organiza** Modelos em camadas: staging, integration, publication.
+3. **No dia a dia** Traz teste e versionamento pro SQL.
 
 ---
 
@@ -637,9 +637,7 @@ SELECT * FROM pedidos;
 
 ## Solução
 
-![bg fit](img/util/esculttura.jpg)
-
-
+Fazer de novo !
 
 ---
 
@@ -680,40 +678,30 @@ SELECT * FROM pedidos;
 
 ---
 
-<!-- _class: light -->
-
-## Camadas do dbt
-
-![bg fit ](img/diagrama-camadas.png)
-
-<!--
-- Mesma ideia do slide anterior, em diagrama.
-- Consumidores só leem publication, nunca RAW diretamente.
--->
-
----
-
-<!-- _class: light -->
+<!-- _class: fluxo-vertical  light -->
 
 ## Orquestração: Airflow + Kubernetes
 
-![bg fit ](img/diagrama-orquestracao.png)
+1. <mark>@task.kubernetes</mark>
+2. COPY INTO com <mark>BATCH</mark>
+3. <mark>KubernetesPodOperator</mark> com DBT
+4. <mark>DBT Tests Isolados</mark>
 
 <!--
-- Mesma ideia do slide anterior, em diagrama.
 - As tags do dbt ligam cada dataset à sua DAG, ex. +tag:ice_mft_futures+.
 -->
 
 ---
 
-4<!-- _class: light -->
+<!-- _class: cartoes light -->
 
 ## O Iceberg derreteu
 
-![bg fit ](img/diagrama-derreteu.png)
+1. **ICEBERG + SNOWFLAKE** DuckDB Local -> Manifesto/Parquet
+2. **ICEBERG + SNOWFLAKE** Manifesto/Parquet sem Acesso
+3. **SNOWFLAKE** Consumo direto
 
 <!--
-- Versão em diagrama do slide anterior, para comparar.
 - As tags do dbt ligam cada dataset à sua DAG, ex. +tag:ice_mft_futures+.
 -->
 
@@ -731,62 +719,16 @@ SELECT * FROM pedidos;
 
 ---
 
-<!-- _class: light -->
+<!-- _class: cartoes light -->
 
-![bg left:42%](img/util/gelo02.jpg)
+## Arquitetura: Tecnica x Negócios
 
-<style scoped>
-section { justify-content: center; }
-section p { font-size: 46px; line-height: 1.3; }
-</style>
-
-## Iceberg é bom
-
-Sem boas práticas, 
-vira <mark>um monte de gelo</mark>.
+1. **Iceberg é BOM** Sem boas prácitas virá "Um monte de gelo"
+2. **Segurança x Reuso** Goverança Extrenam Não Escala
+3. **Legado x Lenda** Aprender com o passado e nem sempre repeti-lo
 
 <!--
-- Arquitetura: Técnica x Negócios.
--->
-
----
-
-<!-- _class: light -->
-
-![bg right:42%](img/util/gelo01.jpg)
-
-<style scoped>
-section { justify-content: center; }
-section p { font-size: 46px; line-height: 1.3; }
-</style>
-
-## Segurança x Reuso
-
-Governança sem controle 
-<mark>não escala</mark>.
-
-<!--
-- Arquitetura: Técnica x Negócios.
--->
-
----
-
-<!-- _class: light -->
-
-![bg left:42%](img/util/gelo04.jpg)
-
-<style scoped>
-section { justify-content: center; }
-section p { font-size: 46px; line-height: 1.3; }
-</style>
-
-## Legado x Lenda
-
-Aprender com o passado, 
-<mark>sem repetir seus erros</mark>.
-
-<!--
-- Arquitetura: Técnica x Negócios.
+- As tags do dbt ligam cada dataset à sua DAG, ex. +tag:ice_mft_futures+.
 -->
 
 ---
@@ -802,7 +744,8 @@ _@gabubellon_
 _bllon.co_
 
 ![QR code para bllon.co](img/qr.png)
-Slides
+
+gabubellon.me · loucuradevaneia.com
 
 <!--
 - Gerar o QR code real: uv run scripts/qr.py https://bllon.co (troca img/qr.png).
