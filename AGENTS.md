@@ -1,6 +1,6 @@
 # Instruções para agentes
 
-Este repositório é um modelo de slides da Python Brasil 2026 em Markdown, com o [Marp](https://marp.app/). A pessoa palestrante escreve a palestra em `slides.md`; o tema `pybr2026.css` aplica a identidade visual do evento.
+Este repositório guarda os slides da palestra "Iceberg: Floco de Neves" na Python Brasil 2026, em Markdown, com o [Marp](https://marp.app/). A pessoa palestrante escreve a palestra em `slides.md`; o tema `pybr2026.css` aplica a identidade visual do evento.
 
 ## Arquivos
 
@@ -54,7 +54,7 @@ Texto ao lado de uma imagem usa a sintaxe do Marp: `![bg right:42%](img/x.png)` 
 - Verde limão como cor de texto, só no fundo escuro. No fundo claro, destaque com o marca-texto: `<mark>palavra</mark>`.
 - Código: o tema aplica as cores do GitHub Light num cartão branco, nos slides escuros e nos claros. Monokai com fundo `#1A1A1A` é a alternativa para quem pedir código no fundo escuro; nesse caso, use fonte grande.
 - Tela de LED do tamanho de uma parede: versão escura, que não ofusca o público. Projetor, TV ou monitor: versão clara, com a classe `light`. O código fica em fundo claro nas duas.
-- Use as figurinhas de `img/` como estão: sem distorcer e sem recolorir. Uma figurinha por slide costuma bastar.
+- Use as figurinhas de `img/figurinhas/` como estão: sem distorcer e sem recolorir. Uma figurinha por slide costuma bastar.
 - A identidade visual é de Ana Terhorst; mantenha o crédito no slide de figurinhas.
 
 ## Regras de conteúdo
@@ -65,16 +65,16 @@ Texto ao lado de uma imagem usa a sintaxe do Marp: `![bg right:42%](img/x.png)` 
 - Toda imagem que não seja de fundo tem texto alternativo entre os colchetes. Gráficos levam os números no texto alternativo.
 - O Marp lê algumas palavras soltas do texto alternativo como filtros de imagem: `blur`, `brightness`, `contrast`, `drop-shadow`, `grayscale`, `hue-rotate`, `invert`, `opacity`, `saturate` e `sepia`. Em inglês, troque essas palavras por outras no texto alternativo: "contrast" muda as cores do gráfico.
 - O que não cabe no slide vai para as anotações.
-- Escreva no idioma do arquivo, indicado em `lang:` no topo: `pt-BR`, `en` ou `es`. Use linguagem neutra de gênero quando possível ("pessoa palestrante", "o público", "quem assiste"; "the speaker", "people"; "la persona que presenta", "el público").
+- Escreva em português (`lang: pt-BR` no topo). Use linguagem neutra de gênero quando possível ("pessoa palestrante", "o público", "quem assiste").
 - O tom é de dica, não de regra: apoio, sem cobrança e sem prometer resultado. Evite "é só", "é fácil" e "todo mundo sabe".
 - Conte mais ou menos 1 minuto por slide, depois de separar uns 5 minutos para perguntas. Pergunte a duração da palestra se não souber.
 
 ## Conferir o resultado
 
-Gere o PDF e olhe os slides que mudaram:
+Gere o PDF e olhe os slides que mudaram (precisa de `npx` no PATH):
 
 ```sh
-npx @marp-team/marp-cli --theme-set pybr2026.css --html --allow-local-files --pdf slides.md
+make pdf   # slides.pdf; use make html para slides.html
 ```
 
 Texto que passa do rodapé ou some atrás de uma imagem quer dizer que o slide tem conteúdo demais: divida em dois.
