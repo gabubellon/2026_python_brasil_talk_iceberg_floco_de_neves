@@ -4,3 +4,7 @@ slides*.pdf
 slides*.pptx
 .DS_Store
 __pycache__/
+
+# Locais
+.vscode/mcp.json
+.claude/settings.local.json
