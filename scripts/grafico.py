@@ -33,7 +33,7 @@ def grafico(arquivo: str, texto: str) -> None:
         borda.set_visible(False)
     fig.tight_layout()
     # Fundo transparente: o gráfico pega a cor do slide, sem um retângulo em volta.
-    fig.savefig(IMG / "graficos" / arquivo, transparent=True)
+    fig.savefig(IMG / arquivo, transparent=True)
 
 
 grafico("grafico-exemplo.png", OFF_WHITE)

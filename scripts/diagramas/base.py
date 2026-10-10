@@ -112,7 +112,7 @@ def icone_floco(cx, cy):
 
 def foto(arquivo, cx, cy, r, legenda):
     """Foto quadrada (recorte central) num círculo com contorno preto."""
-    img = plt.imread(IMG / "fotos" / arquivo)
+    img = plt.imread(IMG / f"foto-{arquivo}")
     h, w = img.shape[:2]
     lado = min(h, w)
     img = img[(h - lado) // 2 : (h + lado) // 2, (w - lado) // 2 : (w + lado) // 2]
@@ -141,4 +141,4 @@ def seta(x1, y1, x2, y2):
 
 
 def salvar(nome):
-    fig.savefig(IMG / "diagramas" / nome, transparent=True, bbox_inches="tight", pad_inches=0.1)
+    fig.savefig(IMG / f"diagrama-{nome}", transparent=True, bbox_inches="tight", pad_inches=0.1)

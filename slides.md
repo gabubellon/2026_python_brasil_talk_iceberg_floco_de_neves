@@ -19,6 +19,11 @@ Do monolito com Apache Iceberg ao Snowflake
 
 **Gabu Bellon** · @gabubellon
 
+<!--
+- Abertura: título, quem você é e a promessa da palestra em uma frase.
+- Combine o ritmo: cerca de 1 minuto por slide e uns 5 minutos para perguntas.
+-->
+
 ---
 
 <!-- _class: frase light -->
@@ -26,42 +31,52 @@ Do monolito com Apache Iceberg ao Snowflake
 # O design destes slides teve apoio de IA.
 
 O conteúdo técnico é todo do palestrante.
-As imagens são de banco de imagens 
+As imagens são de banco de imagens.
+
+<!--
+- Transparência rápida: o design teve apoio de IA, o conteúdo técnico é seu.
+- Passe em uns 20 segundos.
+-->
 
 ---
 
 <!-- _class: palestrante light -->
 
-<style scoped>
-img { border-radius: 165px; }
-</style>
+![Foto de Gabu Bellon](img/foto-palestrante.jpg)
 
-![Foto de Gabu Bellon](img/fotos/palestrante.jpg)
-
-![bg opacity:0.3](img/fotos/palestrante.jpg)
+![bg opacity:0.3](img/foto-palestrante.jpg)
 
 # Gabu Bellon
 
 ### Lead Data Engineer · phData · @gabubellon
 
 - Pronomes: Nenhum / Ele / Dele
-- Nerd/Geek e pai da Ceci
+- Nerd/Geek, Queer, Comunista e pai da Ceci
 - Entusiasta de Comunidade de Dados
 - Pythonista e Conselheiro da APyB
 
+<!--
+- Apresentação curta: cargo, comunidade e Python.
+- Deixe o contato para o fim.
+-->
+
 ---
 
-<!-- _class: cartoes light -->
+<!-- _class: light -->
 
 ## Uma Jornada em Três Gerações
 
-1. **Monólito** Apache Iceberg
-2. **Warehouse** Snowflake e dbt
-3. **Batch** Airflow + Kubernetes
+<div class="jornada">
+<div class="geracao"><span class="numero">01</span><div class="logos"><img class="um" src="img/logo-iceberg.png" alt="Logo do Apache Iceberg"></div><h3>Monólito</h3><p>Apache Iceberg</p></div>
+<div class="seta">→</div>
+<div class="geracao"><span class="numero">02</span><div class="logos"><img src="img/logo-snowflake.png" alt="Logo do Snowflake"><img src="img/logo-dbt.png" alt="Logo do dbt"></div><h3>Warehouse</h3><p>Snowflake e dbt</p></div>
+<div class="seta">→</div>
+<div class="geracao"><span class="numero">03</span><div class="logos"><img class="um" src="img/logo-airflow.png" alt="Logo do Apache Airflow"></div><h3>Batch</h3><p>Airflow + Kubernetes</p></div>
+</div>
 
 <!--
-- Nenhuma geração substitui a anterior de uma vez: as três convivem durante a migração.
-- Migração feed a feed, com corte controlado, sem big-bang.
+- Conte as três gerações em ordem: Monólito, Warehouse e Batch.
+- Nenhuma substitui a anterior de uma vez: convivem na migração, feed a feed, sem big-bang.
 -->
 
 ---
@@ -75,18 +90,26 @@ img { border-radius: 165px; }
 - **3** gerações de arquitetura convivendo
 
 <!--
+- Os três números: 30+ fontes, 50+ DAGs e 3 gerações convivendo.
 - A plataforma consolida preços, índices, derivativos e referências do mercado financeiro.
 -->
 
 ---
 
-<!-- _class: destaque light -->
+<!-- _class: light -->
 
-## <div align=center>Funcionar <br>X Escalabilidade</div>
+## Funcionar X Escalabilidade
 
-- Crescimento X Governança X Manutenção
-- Melhor Arqutetura X Arquitetura Que Entrega
-- Solução Perfeita x Solução Necessária
+<div class="versus">
+<div class="lado-a">Crescimento</div><div class="disco">X</div><div class="lado-b">Governança e Manutenção</div>
+<div class="lado-a">Melhor Arquitetura</div><div class="disco">X</div><div class="lado-b">Arquitetura Que Entrega</div>
+<div class="lado-a">Solução Perfeita</div><div class="disco">X</div><div class="lado-b">Solução Necessária</div>
+</div>
+
+<!--
+- Cada linha é uma tensão do dia a dia: um exemplo curto de cada.
+- Ideia central: funcionar hoje não garante escalar amanhã.
+-->
 
 ---
 
@@ -97,26 +120,29 @@ img { border-radius: 165px; }
 # _01_ Ferramentas
 
 <!--
-- Como tudo começou: o monólito Apache Iceberg.
+- Abre a parte de ferramentas: Airflow, Snowflake, dbt e Iceberg.
+- Depois, como acessar um catálogo Iceberg.
 -->
 
 ---
 
-<!-- _class: cartoes light fig-dir -->
+<!-- _class: cartoes light fig-dir fig-mago -->
 
-<style scoped>
-section { --fig: url("img/figurinhas/mago.png"); --fig-rot: 9deg; }
-</style>
-
-![bg opacity:0.3 fit:40% 49%](img/logos/apache-airflow.png)
+![bg opacity:0.3 fit:40% 49%](img/logo-airflow.png)
 
 ## Apache Airflow
 
-1. **O que é** Orquestrador de Rotinas Agendados (DAG)
+1. **O que é** Orquestrador de Rotinas Agendadas (DAG)
 2. **Como funciona** Cada fluxo é uma DAG em código Python.
-3. **No dia a dia** Permite centraliza a execução de rotinas e pipeline de dados 
+3. **No dia a dia** Permite centralizar a execução de rotinas e pipelines de dados
+
+<!--
+- Airflow orquestra rotinas agendadas; cada fluxo é uma DAG em código Python.
+- O próximo slide mostra uma DAG pequena.
+-->
 
 ---
+
 <!-- _class: light -->
 
 ## Apache Airflow
@@ -124,9 +150,9 @@ section { --fig: url("img/figurinhas/mago.png"); --fig-rot: 9deg; }
 ```python
 from datetime import datetime
 from airflow.decorators import dag
-import airflow.operators.empty.EmptyOperator
-@dag(   start_date=datetime(2021, 1, 1), 
-        schedule="@daily")
+from airflow.operators.empty import EmptyOperator
+@dag(start_date=datetime(2021, 1, 1),
+     schedule="@daily")
 def meu_dag():
     a, b, c, d = [
             EmptyOperator(task_id=t) 
@@ -136,63 +162,66 @@ def meu_dag():
 meu_dag()
 ```
 
-![bg right:30% contain](img/diagramas/airflow-dag.png)
+![bg right:30% contain](img/diagrama-airflow-dag.png)
 
 <!--
-- Uma DAG (grafo acíclico dirigido) reúne tarefas com dependências e relações que dizem como rodam.
-- Aqui ela é declarada com o decorador @dag; também dá com `with DAG(...)` ou o construtor.
-- O operador >> define a dependência: a roda antes; b e c rodam depois dela; d só roda quando as duas terminam.
-- Diagrama da documentação oficial do Apache Airflow 2.5.2 (Core Concepts > DAGs), Apache License 2.0.
-- Cada execução cria uma nova instância da DAG, chamada DAG Run; schedule="@daily" roda uma por dia.
-- Fonte: documentação do Airflow 2.5.2, Core Concepts > DAGs.
-- https://airflow.apache.org/docs/apache-airflow/2.5.2/core-concepts/dags.html
+- Uma DAG (grafo acíclico dirigido) reúne tarefas e dependências; aqui vai com o decorador @dag.
+- O operador >> define a ordem: a roda antes; b e c depois; d só quando as duas terminam.
+- Cada execução cria um DAG Run; schedule="@daily" roda um por dia.
 -->
 
 ---
 
-<!-- _class: cartoes light fig-esq -->
+<!-- _class: cartoes light fig-esq fig-mago-ola -->
 
-<style scoped>
-section { --fig: url("img/figurinhas/mago-ola.png"); --fig-rot: 8deg; }
-</style>
-
-![bg opacity:0.3 fit:40% 49%](img/logos/snowflake.png)
+![bg opacity:0.3 fit:40% 49%](img/logo-snowflake.png)
 
 ## Snowflake
 
-1. **O que é** Data warehouse gerenciado, na nuvem.
-2. **Diferencial** Separa armazenamento e processamento.
-3. **No dia a dia** Consultas em SQL, sem cuidar de servidor.
+1. **O que é** Solução de Ambiente de Dados Completa na nuvem
+2. **Como organiza** Banco de dados, Ferramentas de Dados (Stream, Acesso)
+3. **No dia a dia** Ambiente de disponibilização e análise de dados
+
+<!--
+- Snowflake: ambiente de dados completo na nuvem.
+- O próximo slide traz o diagrama geral.
+-->
 
 ---
+
 <!-- _class: light -->
 
 ## Snowflake
 
-![bg 90%](img/diagramas/snowflake-dados.png)
+![bg 90%](img/diagrama-snowflake-dados.png)
+
+<!--
+- Use o diagrama como visão geral, sem detalhar cada caixa.
+-->
 
 ---
 
 
-<!-- _class: cartoes light fig-dir -->
+<!-- _class: cartoes light fig-dir fig-bruxa -->
 
-<style scoped>
-section { --fig: url("img/figurinhas/bruxa.png"); --fig-rot: -7deg; }
-</style>
-
-![bg opacity:0.3 fit:40% 49%](img/logos/dbt.png)
+![bg opacity:0.3 fit:40% 49%](img/logo-dbt.png)
 
 ## dbt
 
-1. **O que é** Solução de Ambiente de Dados Completa na nuvem
-2. **Como organiza** Banco de dados, Ferramentes de Dados (Stream,Acesso)
-3. **No dia a dia** Ambinte de dispobilização e analise de dados
+1. **O que é** Ferramenta para transformar dados com SQL dentro do banco.
+2. **Como organiza** Cada consulta SQL vira um modelo, em camadas.
+3. **No dia a dia** Testes, documentação e histórico do código junto dos modelos.
+
+<!--
+- dbt transforma dados com SQL dentro do banco, em modelos e camadas.
+- Testes e documentação ficam junto dos modelos.
+-->
 
 ---
 
 <!-- _class: light -->
 
-## DBT
+## dbt
 
 ```yml
 version: 2
@@ -204,17 +233,18 @@ models:
         tests: [unique]
 ```
 
-![bg right:50% contain](img/diagramas/dbt-plata.jpg)
+![bg right:50% contain](img/diagrama-dbt-plata.jpg)
+
+<!--
+- Um modelo com descrição e um teste de unicidade no id.
+- O diagrama ao lado mostra as camadas.
+-->
 
 ---
 
-<!-- _class: cartoes light fig-esq -->
+<!-- _class: cartoes light fig-esq fig-bruxa -->
 
-<style scoped>
-section { --fig: url("img/figurinhas/bruxa.png"); --fig-rot: -12deg; }
-</style>
-
-![bg opacity:0.3 fit:40% 49%](img/logos/apache-iceberg.png)
+![bg opacity:0.3 fit:40% 49%](img/logo-iceberg.png)
 
 ## Apache Iceberg
 
@@ -222,23 +252,32 @@ section { --fig: url("img/figurinhas/bruxa.png"); --fig-rot: -12deg; }
 2. **Pra que serve** Traz transação e versão pros arquivos.
 3. **No dia a dia** Cada commit vira um snapshot: dá pra voltar no tempo.
 
+<!--
+- Iceberg é um formato de tabela para arquivos de dados, não um motor nem um banco.
+- Cada commit vira um snapshot: dá pra voltar no tempo.
+-->
+
 ---
 
 <!-- _class: light -->
-<!-- _paginate: true -->
 
 ## Apache Iceberg
 
-![bg contain](img/fotos/biblioteca.jpg)
+![bg contain](img/foto-biblioteca.jpg)
 
-![bg contain](img/fotos/arquivos.jpg)
+![bg contain](img/foto-arquivos.jpg)
+
+<!--
+- Sugestão de analogia: o catálogo organiza e os arquivos guardam os dados.
+- Passe rápido: é um slide de imagem.
+-->
 
 ---
 
 <!-- _class: fluxo-vertical light -->
-<!-- _paginate: true -->
+<!-- _paginate: false -->
 
-![bg right:60% contain](img/diagramas/iceberg-metadata.png)
+![bg right:60% contain](img/diagrama-iceberg-metadata.png)
 
 ## Catálogo e Metadata
 
@@ -249,12 +288,11 @@ section { --fig: url("img/figurinhas/bruxa.png"); --fig-rot: -12deg; }
 
 <!--
 - O catálogo guarda só um ponteiro: qual metadata file é o atual de cada tabela.
-- Metadata layer: metadata file (schema, snapshots) → manifest list → manifest files.
-- Manifest files apontam os arquivos de dados reais (data layer).
-- Estrutura descrita na especificação oficial do Apache Iceberg (iceberg.apache.org/spec).
+- Metadata file (schema, snapshots), manifest list, manifest files e, por fim, os arquivos de dados.
 -->
 
 ---
+
 <!-- _class: light -->
 ## Histórico de Snapshots
 
@@ -262,37 +300,32 @@ section { --fig: url("img/figurinhas/bruxa.png"); --fig-rot: -12deg; }
 <strong>Snapshots</strong><br>Cada commit vira um snapshot novo: dá pra marcar (tags) e voltar no tempo.
 </div>
 
-![bg left:58% contain](img/diagramas/iceberg-snapshot-tag.png)
+![bg left:58% contain](img/diagrama-iceberg-snapshot-tag.png)
 
 <!--
-- Cada commit do Iceberg vira um snapshot novo na linha do tempo.
-- Dá pra marcar snapshots importantes (tags) e guardar por um tempo, pra auditoria ou retenção.
-- Diagrama da documentação oficial do Apache Iceberg (iceberg.apache.org/docs/latest/branching), Apache License 2.0.
+- Cada commit vira um snapshot novo na linha do tempo.
+- Dá pra marcar snapshots importantes (tags) para auditoria ou retenção.
 -->
 
 ---
+
 <!-- _class: light -->
 ## Particionamento
 
 <div class="nota-flutuante dir">
-<strong>Particionamento</strong><br>é dinamico porque é gerenciado diretamente no dado
+<strong>Particionamento</strong><br>é dinâmico porque é gerenciado diretamente no dado
 </div>
 
-![bg right:58% contain](img/diagramas/iceberg-partition.png)
+![bg right:58% contain](img/diagrama-iceberg-partition.png)
 
 <!--
-- Cada commit do Iceberg vira um snapshot novo na linha do tempo.
-- Dá pra marcar snapshots importantes (tags) e guardar por um tempo, pra auditoria ou retenção.
-- Diagrama da documentação oficial do Apache Iceberg (iceberg.apache.org/docs/latest/branching), Apache License 2.0.
+- O particionamento é dinâmico porque é gerenciado diretamente no dado.
+- Aponte no diagrama onde a partição aparece.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-section { --logo: url("img/logos/apache-iceberg.png"); }
-</style>
+<!-- _class: light logo-br logo-iceberg -->
 
 ## Manifest: o Ponteiro pros Dados
 
@@ -309,30 +342,24 @@ section { --logo: url("img/logos/apache-iceberg.png"); }
 ```
 
 <!--
-- Cada linha do manifest aponta um arquivo de dados (data_file.file_path), com métricas como record_count.
-- Exemplo simplificado e com valores inventados; no disco o manifest é um arquivo Avro, aqui mostrado em JSON.
-- status: 0 é arquivo existente, 1 é adicionado, 2 é removido.
-- Um manifest real tem mais campos (partição, tamanho do arquivo, limites de coluna); veja a especificação em iceberg.apache.org/spec.
+- Cada linha do manifest aponta um arquivo de dados (file_path), com métricas como record_count.
+- Exemplo simplificado e com valores inventados; o manifest real é Avro, aqui em JSON.
+- status: 0 existente, 1 adicionado, 2 removido.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
+<!-- _class: light tabela-compacta -->
 
-![bg opacity:0.3 fit:40% 49%](img/logos/apache-iceberg.png)
-
-<style scoped>
-table { width: 100%; table-layout: fixed; font-size: 22px; }
-th, td { padding: 6px 10px; word-wrap: break-word; }
-</style>
+![bg opacity:0.3 fit:40% 49%](img/logo-iceberg.png)
 
 ## Como Acessar o Catálogo
 
 | Catálogo | Implementação |
 |---|---|
-| Python  | Code (PyIceberg e Polars) |
-  Engine  | Code and SaaS (Spark, Flink, Trino, DuckDB e Snowflake) |
-| REST Catalog | Code ou SaaS (Snowflake,Polaris, Unity Catalog, Tabular |
+| Python | Code (PyIceberg e Polars) |
+| Engine | Code e SaaS (Spark, Flink, Trino, DuckDB e Snowflake) |
+| REST Catalog | Code ou SaaS (Snowflake, Polaris, Unity Catalog, Tabular) |
 | Hive Catalog | Code |
 | AWS Glue | SaaS |
 | JDBC Catalog | SaaS |
@@ -340,20 +367,14 @@ th, td { padding: 6px 10px; word-wrap: break-word; }
 | Hadoop Catalog | Code |
 
 <!--
-- Catálogos suportados pelo Apache Iceberg (iceberg.apache.org/docs/latest).
-- HadoopCatalog não implementa rename de tabela e depende de rename atômico do filesystem — por isso é arriscado em object stores como S3.
-- "Na mão" é só a infraestrutura: você sobe e mantém o serviço. "Gerenciado" é alguém cuidando disso por você.
-- Lista parcial: a documentação lista bem mais engines (iceberg.apache.org/multi-engine-support).
-- Polaris, Unity Catalog e Tabular implementam o protocolo REST Catalog da especificação Iceberg.
+- Visão geral: de Python a engines e serviços gerenciados, quase todos falam com o mesmo catálogo.
+- A lista é parcial; a documentação traz mais engines (ver Referências).
+- Polaris, Unity Catalog e Tabular implementam o protocolo REST Catalog.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-section { --logo: url("img/logos/python.png"); }
-</style>
+<!-- _class: light logo-br logo-python -->
 
 ## PyIceberg
 
@@ -369,17 +390,12 @@ df = tabela.scan().to_pandas()
 
 <!--
 - Exemplo genérico: troque o nome do catálogo, a URI e a tabela pelos seus.
-- type="rest" vale para catálogos que seguem o protocolo REST Catalog; Glue, Hive e outros usam outro type.
-- A credencial normalmente vai na configuração do PyIceberg ou em variáveis de ambiente.
+- type="rest" vale para catálogos REST; Glue, Hive e outros usam outro type.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-section { --logo: url("img/logos/python.png"); }
-</style>
+<!-- _class: light logo-br logo-python -->
 
 ## PyIceberg: Disco Local
 
@@ -395,18 +411,13 @@ tabela = catalog.load_table("vendas.pedidos")
 ```
 
 <!--
-- Exemplo genérico: o catálogo é um arquivo SQLite e os dados ficam numa pasta do disco, sem servidor e sem URL.
-- Troque os caminhos pelos seus; o warehouse usa o esquema file://.
-- Para ler uma tabela direto de um arquivo de metadata, sem catálogo, existe StaticTable.from_metadata("/caminho/metadata/v1.metadata.json").
+- Mesmo código, mas o catálogo é um arquivo SQLite e os dados ficam numa pasta do disco.
+- O warehouse usa file://; sem servidor e sem URL.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-section { --logo: url("img/logos/apache-iceberg.png"); }
-</style>
+<!-- _class: light logo-br logo-iceberg -->
 
 ## Spark
 
@@ -421,18 +432,13 @@ spark.sql("SELECT * FROM meu.vendas.pedidos")
 ```
 
 <!--
-- Exemplo genérico: URI é o endereço do seu catálogo REST.
 - Precisa do JAR iceberg-spark-runtime no classpath da sessão.
-- O nome "meu" depois de spark.sql.catalog. é o nome do catálogo nas consultas.
+- O nome depois de spark.sql.catalog. é o nome do catálogo nas consultas.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-section { --logo: url("img/logos/apache-iceberg.png"); }
-</style>
+<!-- _class: light logo-br logo-iceberg -->
 
 ## DuckDB
 
@@ -446,17 +452,13 @@ SELECT * FROM meu.vendas.pedidos;
 ```
 
 <!--
-- Exemplo genérico: troque o endpoint e o nome do warehouse pelos seus.
-- Normalmente precisa de um CREATE SECRET com as credenciais; a sintaxe depende da versão do DuckDB.
+- Troque o endpoint e o nome do warehouse pelos seus.
+- Normalmente precisa de um CREATE SECRET; a sintaxe depende da versão do DuckDB.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-section { --logo: url("img/logos/apache-iceberg.png"); }
-</style>
+<!-- _class: light logo-br logo-iceberg -->
 
 ## Trino
 
@@ -473,16 +475,12 @@ SELECT * FROM meu.vendas.pedidos;
 
 <!--
 - No Trino o catálogo é um arquivo .properties; o nome do arquivo vira o nome do catálogo.
-- Exemplo genérico: troque a URI pela do seu catálogo REST.
+- Troque a URI pela do seu catálogo REST.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-section { --logo: url("img/logos/snowflake.png"); }
-</style>
+<!-- _class: light logo-br logo-snowflake -->
 
 ## Snowflake: Catalog Integration
 
@@ -496,8 +494,8 @@ CREATE CATALOG INTEGRATION meu_catalogo
 ```
 
 <!--
-- Exemplo genérico, sem a autenticação (REST_AUTHENTICATION, com OAuth); confira os parâmetros na documentação do Snowflake.
-- Depois: CREATE ICEBERG TABLE pedidos CATALOG = 'meu_catalogo' EXTERNAL_VOLUME = 'meu_volume' CATALOG_TABLE_NAME = 'pedidos';
+- Exemplo sem a autenticação (REST_AUTHENTICATION); confira os parâmetros na documentação.
+- Depois: CREATE ICEBERG TABLE ... CATALOG = 'meu_catalogo' CATALOG_TABLE_NAME = 'pedidos'.
 - O Snowflake lê a tabela; quem a gerencia continua sendo o catálogo externo.
 -->
 
@@ -510,40 +508,34 @@ CREATE CATALOG INTEGRATION meu_catalogo
 # _02_ Monólito Iceberg
 
 <!--
-- Como tudo começou: o monólito Apache Iceberg.
+- Volta no tempo: o monólito com Apache Iceberg.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: light imagem-centro -->
 
-<style scoped>
-section { justify-content: center; align-items: center; }
-img:not([alt~="bg"]) { display: block; margin: 0 auto; }
-</style>
+![bg fit](img/foto-monolito.jpg)
 
-![bg fit](img/fotos/monolito.jpg)
+![w:150 Logo do Python](img/logo-python.png)
 
-![w:150 Logo do Python](img/logos/python.png)
-
-![w:150 Logo do Python](img/logos/apache-iceberg.png)
+![w:150 Logo do Python](img/logo-iceberg.png)
 
 <!--
 - O monólito: um sistema só, em Python, concentrando o fluxo de ponta a ponta.
-- Imagem de fundo em retrato: o Marp corta as bordas para preencher o slide.
 -->
 
 ---
 
-<!-- _class: fluxo light logo-br -->
+<!-- _class: fluxo light fluxo-logos -->
 
 ## Fluxo Legado
 
 1. SFTP/API
-2. Airflow
-3. Builders em Python (INSERT/UPDATE)
-4. Commit no Iceberg
-   
+2. ![w:72 Logo do Apache Airflow](img/logo-airflow.png) Airflow
+3. ![w:72 Logo do Python](img/logo-python.png) Builders em Python (INSERT/UPDATE)
+4. ![w:72 Logo do Apache Iceberg](img/logo-iceberg.png) Commit no Iceberg
+
 ```python
 @DataLakeTable(
     dataset="precos",
@@ -555,29 +547,32 @@ def build(procdate):
 
 <!--
 - Airflow dispara o main_*.py; execução manual: python main_.py --procdate YYYYMMDD.
-- Builders em jgdata/datasets/ transformam os dados.
-- initDataset() decide se precisa rodar backfill, via executeBuild().
-- O commit no Iceberg vira um snapshot.
-- @DataLakeCache e @DataLakeTable registram o builder no SchemaRegistry.
-- FileLock em /var/tmp/iceberg/{table} serializa as escritas do Spark.
+- Os builders em Python registram-se com @DataLakeTable; o commit no Iceberg vira um snapshot.
+- FileLock serializa as escritas do Spark.
 -->
 
 ---
 
 <!-- _class: light -->
-## Catálogo Rígido 
+<!-- _paginate: false -->
 
-* <span class="circulo">S3 -> Local</span> virtual
-* PySpark <span class="circulo">UM NÓ</span> por execução
-* Manifesto com Caminho <span class="circulo">RÍGIDO</span> (/home/xpto/file.parquet)
-* <span class="circulo">UPDATE</span> em Partições
-<br>
-<div align=center>
-<mark>ANTI-PATTERN</mark>
+## Catálogo Rígido
+
+<div class="grade-2">
+<div class="cartao"><div class="titulo">S3 → LOCAL</div><div class="texto">virtual</div></div>
+<div class="cartao"><div class="titulo">UM NÓ</div><div class="texto">PySpark por execução</div></div>
+<div class="cartao"><div class="titulo">CAMINHO RÍGIDO</div><div class="texto">no manifesto: /home/xpto/file.parquet</div></div>
+<div class="cartao"><div class="titulo">UPDATE</div><div class="texto">em partições</div></div>
 </div>
 
-![bg right:30%](img/figurinhas/mago.png)
+<div class="faixa"><span class="disco">✕</span>ANTI-PATTERN</div>
 
+![bg right:30%](img/figurinha-mago.png)
+
+<!--
+- Cada cartão é um motivo do anti-pattern.
+- Foque no caminho rígido: o manifesto aponta um caminho local.
+-->
 
 ---
 
@@ -588,14 +583,14 @@ def build(procdate):
 # _03_ Snowflake e DBT
 
 <!--
-- Snowflake, dbt e o Datapipe.
+- Segunda geração: Snowflake, dbt e o Datapipe.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: light logo-br logo-iceberg -->
 
-## Da pra retulizar ?
+## Dá pra reutilizar? Volume externo
 
 ```sql
 CREATE EXTERNAL VOLUME meu_volume
@@ -605,7 +600,20 @@ CREATE EXTERNAL VOLUME meu_volume
     STORAGE_BASE_URL = 's3://meu-bucket/vendas/'
     STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::123456789012:role/sf'
   ));
+```
 
+<!--
+- Primeiro passo no Snowflake: o volume externo aponta o bucket.
+- Exemplo genérico: troque os nomes pelos seus.
+-->
+
+---
+
+<!-- _class: light logo-br logo-iceberg -->
+
+## Dá pra reutilizar? Tabela Iceberg
+
+```sql
 CREATE ICEBERG TABLE pedidos
   EXTERNAL_VOLUME = 'meu_volume'
   CATALOG = 'meu_catalogo'
@@ -613,40 +621,61 @@ CREATE ICEBERG TABLE pedidos
 
 SELECT * FROM pedidos;
 ```
----
 
-<!-- _class: cartoes light -->
-
-## Da pra retulizar ?
-
-1. **Caminho Relativo** Manifestos Rigidos
-2. **Catálgo Dinâmico** Gerado a cada Carga
-3. **Volume de Dados** Carga Histórica
-
-<br>
-<div>
-<mark>NÃO FORAM SEGUIDAS BOAS PRÁTICAS DE ARQUITETURA</mark>
-</div>
+<!--
+- Depois, a tabela Iceberg lê o metadata file do volume.
+- O caminho do metadata é fixo no exemplo, o que leva ao próximo slide.
+-->
 
 ---
 
 <!-- _class: light -->
 
-## Solução
+## Dá pra reutilizar?
 
-![bg fit](img/fotos/escultura.jpg)
+<div class="grade-3">
+<div class="cartao"><span class="disco preto">1</span><div class="titulo">Caminho Relativo</div><div class="texto">Manifestos rígidos</div></div>
+<div class="cartao"><span class="disco preto">2</span><div class="titulo">Catálogo Dinâmico</div><div class="texto">Gerado a cada carga</div></div>
+<div class="cartao"><span class="disco preto">3</span><div class="titulo">Volume de Dados</div><div class="texto">Carga histórica</div></div>
+</div>
 
+<div class="faixa"><span class="disco">!</span>NÃO FORAM SEGUIDAS BOAS PRÁTICAS DE ARQUITETURA</div>
 
+<!--
+- Três motivos que impediram a reutilização direta.
+- Feche com a faixa: não foram seguidas boas práticas de arquitetura.
+-->
 
 ---
 
+<!-- _class: light -->
+
+![bg fit](img/foto-escultura.jpg)
+
+<!--
+- Pausa visual antes da nova arquitetura.
+-->
+
+---
+
+<!-- _class: light -->
+
 ## Nova Arquitetura
 
-<!-- _class: cartoes light -->
+<div class="grade-2">
+<div class="cartao com-logo"><img src="img/logo-iceberg.png" alt="Logo do Apache Iceberg"><div><div class="titulo">Reaproveitamento</div><div class="texto">Dados Raw históricos (local/s3)</div></div></div>
+<div class="cartao com-logo"><img src="img/logo-airflow-snowflake-dbt.png" alt="Logos do Airflow, Snowflake e dbt"><div><div class="titulo">Framework Novo</div><div class="texto">Airflow K8S + dbt + Snowflake</div></div></div>
+</div>
 
-1. **Reaproveitamento** Dados Raw Históricos (local/s3)
-2. **Framework Novo** Airflow K8S+ DBT + Snowflake
-3. **Pipeline Batch** RAW -> STAGE -> INTEG -> PROD
+<p class="legenda-trilha">PIPELINE BATCH</p>
+<div class="trilha">
+<div class="passo">RAW</div><div class="passo">STAGE</div><div class="passo">INTEG</div><div class="passo">PROD</div>
+</div>
+
+<!--
+- Reaproveitamento dos dados raw históricos (local/s3) em um framework novo.
+- Pipeline batch: RAW, STAGE, INTEG e PROD.
+-->
 
 ---
 
@@ -654,25 +683,11 @@ SELECT * FROM pedidos;
 
 ## Ingestão em Lote
 
-![bg fit ](img/diagramas/ingestao.png)
-
+![bg fit](img/diagrama-ingestao.png)
 
 <!--
 - Mesma ideia do slide anterior, em diagrama.
 - A ingestão ainda não conhece o Snowflake.
--->
-
----
-<!-- _class: cartoes light -->
-## Camadas no DBT
-
-1. **STAGING** Limpeza e Tipo
-2. **INTEGRATION** Regras Negócios e Fitros (SQL)
-3. **PUBLICATION** Views de Consultas
-
-<!--
-- Consumidores só leem publication, nunca RAW diretamente.
-- sources/*.yml liga os models às tabelas RAW.
 -->
 
 ---
@@ -681,10 +696,10 @@ SELECT * FROM pedidos;
 
 ## Camadas do dbt
 
-![bg fit ](img/diagramas/camadas.png)
+![bg fit](img/diagrama-camadas.png)
 
 <!--
-- Mesma ideia do slide anterior, em diagrama.
+- Mesma ideia, agora nas camadas do dbt.
 - Consumidores só leem publication, nunca RAW diretamente.
 -->
 
@@ -694,24 +709,24 @@ SELECT * FROM pedidos;
 
 ## Orquestração: Airflow + Kubernetes
 
-![bg fit ](img/diagramas/orquestracao.png)
+![bg fit](img/diagrama-orquestracao.png)
 
 <!--
-- Mesma ideia do slide anterior, em diagrama.
-- As tags do dbt ligam cada dataset à sua DAG, ex. +tag:ice_mft_futures+.
+- As tags do dbt ligam cada dataset à sua DAG, por exemplo +tag:ice_mft_futures+.
+- Mostre onde o Airflow entra e onde o Kubernetes entra.
 -->
 
 ---
 
-4<!-- _class: light -->
+<!-- _class: light -->
 
 ## O Iceberg derreteu
 
-![bg fit ](img/diagramas/derreteu.png)
+![bg fit](img/diagrama-derreteu.png)
 
 <!--
-- Versão em diagrama do slide anterior, para comparar.
-- As tags do dbt ligam cada dataset à sua DAG, ex. +tag:ice_mft_futures+.
+- Versão em diagrama para comparar com os slides anteriores.
+- Mostre quais caminhos usam Iceberg + Snowflake e quais só o Snowflake.
 -->
 
 ---
@@ -723,67 +738,56 @@ SELECT * FROM pedidos;
 # _04_ Enxugando Gelo
 
 <!--
+- Fechamento: aprendizados e boas práticas.
 - Snowflake, dbt e o Datapipe.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: light foto-frase -->
 
-![bg left:42%](img/fotos/gelo02.jpg)
-
-<style scoped>
-section { justify-content: center; }
-section p { font-size: 46px; line-height: 1.3; }
-</style>
+![bg left:42%](img/foto-gelo02.jpg)
 
 ## Iceberg é bom
 
-Sem boas práticas, 
+Sem boas práticas,
 vira <mark>um monte de gelo</mark>.
 
 <!--
 - Arquitetura: Técnica x Negócios.
+- Frase para a plateia levar.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: light foto-frase -->
 
-![bg right:42%](img/fotos/gelo01.jpg)
-
-<style scoped>
-section { justify-content: center; }
-section p { font-size: 46px; line-height: 1.3; }
-</style>
+![bg right:42%](img/foto-gelo01.jpg)
 
 ## Segurança x Reuso
 
-Governança sem controle 
+Governança sem controle
 <mark>não escala</mark>.
 
 <!--
 - Arquitetura: Técnica x Negócios.
+- Governança sem controle não escala.
 -->
 
 ---
 
-<!-- _class: light -->
+<!-- _class: light foto-frase -->
 
-![bg left:42%](img/fotos/gelo04.jpg)
-
-<style scoped>
-section { justify-content: center; }
-section p { font-size: 46px; line-height: 1.3; }
-</style>
+![bg left:42%](img/foto-gelo04.jpg)
 
 ## Legado x Lenda
 
-Aprender com o passado, 
+Aprender com o passado,
 <mark>sem repetir seus erros</mark>.
 
 <!--
 - Arquitetura: Técnica x Negócios.
+- Aprender com o passado sem repetir os erros.
 -->
 
 ---
@@ -802,7 +806,82 @@ _bllon.co_
 Slides
 
 <!--
-- Gerar o QR code real: uv run scripts/qr.py https://bllon.co (troca img/qr.png).
+- Abra para perguntas e mostre o QR code com os slides.
+- Para gerar o QR real: uv run scripts/qr.py https://bllon.co (troca img/qr.png).
+-->
+
+---
+
+<!-- _class: frase light -->
+<!-- _paginate: false -->
+<!-- _footer: "" -->
+
+# Obrigado!
+
+<!--
+- Agradeça e avise que as Referências e os extras estão logo depois.
+- Os extras servem para quem quiser ver mais.
+-->
+
+---
+
+<!-- _class: light tabela-compacta referencias -->
+
+## Referências: Iceberg
+
+| Tema | Link |
+|---|---|
+| Documentação | [iceberg.apache.org/docs/latest](https://iceberg.apache.org/docs/latest/) |
+| Especificação | [iceberg.apache.org/spec](https://iceberg.apache.org/spec/) |
+| Branches e tags | [iceberg.apache.org/docs/latest/branching](https://iceberg.apache.org/docs/latest/branching/) |
+| Engines suportadas | [iceberg.apache.org/multi-engine-support](https://iceberg.apache.org/multi-engine-support/) |
+| PyIceberg | [py.iceberg.apache.org](https://py.iceberg.apache.org/) |
+| Spark | [iceberg.apache.org/.../spark-getting-started](https://iceberg.apache.org/docs/latest/spark-getting-started/) |
+| Trino | [trino.io/docs/current/connector/iceberg](https://trino.io/docs/current/connector/iceberg.html) |
+| DuckDB | [duckdb.org/docs/.../iceberg/overview](https://duckdb.org/docs/stable/core_extensions/iceberg/overview) |
+
+<!--
+- Links das documentações citadas nos slides de Iceberg e de acesso ao catálogo.
+-->
+
+---
+
+<!-- _class: light tabela-compacta referencias -->
+
+## Referências: Plataforma
+
+| Tema | Link |
+|---|---|
+| Snowflake e Iceberg | [docs.snowflake.com/.../tables-iceberg](https://docs.snowflake.com/en/user-guide/tables-iceberg) |
+| CREATE ICEBERG TABLE | [docs.snowflake.com/.../create-iceberg-table-snowflake](https://docs.snowflake.com/en/sql-reference/sql/create-iceberg-table-snowflake) |
+| CREATE CATALOG INTEGRATION | [docs.snowflake.com/.../create-catalog-integration](https://docs.snowflake.com/en/sql-reference/sql/create-catalog-integration) |
+| CREATE EXTERNAL VOLUME | [docs.snowflake.com/.../create-external-volume](https://docs.snowflake.com/en/sql-reference/sql/create-external-volume) |
+| Airflow (DAGs) | [airflow.apache.org/.../2.5.2/.../dags](https://airflow.apache.org/docs/apache-airflow/2.5.2/core-concepts/dags.html) |
+| dbt | [docs.getdbt.com](https://docs.getdbt.com/) |
+| Polars | [docs.pola.rs](https://docs.pola.rs/) |
+| Parquet | [parquet.apache.org/docs](https://parquet.apache.org/docs/) |
+
+<!--
+- Documentação de Snowflake, Airflow, dbt, Polars e Parquet usada nos slides.
+- Os links também funcionam no HTML e no PDF gerados com make html e make pdf.
+-->
+
+---
+
+<!-- _class: light tabela-compacta referencias -->
+
+## Créditos das Imagens
+
+| Imagem | Origem |
+|---|---|
+| Diagrama da DAG do Airflow | [Documentação do Airflow 2.5.2](https://airflow.apache.org/docs/apache-airflow/2.5.2/core-concepts/dags.html), Apache License 2.0 |
+| Diagrama de snapshots e tags | [Documentação do Apache Iceberg](https://iceberg.apache.org/docs/latest/branching/), Apache License 2.0 |
+| Fotos | https://unsplash.com/ e https://unsplash.com/ |
+| Logos | Apache Airflow, Apache Iceberg, dbt, Snowflake e Python: marcas dos respectivos projetos |
+
+<!--
+- Créditos extraídos dos metadados das imagens e da documentação de origem.
+- Imagens sem origem nos metadados não aparecem aqui.
 -->
 
 ---
@@ -811,20 +890,15 @@ Slides
 <!-- _paginate: false -->
 <!-- _footer: "" -->
 
-# Extra
+# _Extra_ Iceberg
 
 <!--
-- Slides de apoio, caso dê tempo ou surjam perguntas sobre catálogos.
+- Slides de apoio sobre catálogos, caso surjam perguntas.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
-
-<style scoped>
-table { width: 100%; table-layout: fixed; font-size: 22px; }
-th, td { padding: 6px 10px; word-wrap: break-word; }
-</style>
+<!-- _class: light logo-br logo-iceberg tabela-compacta -->
 
 ## Qual Catálogo Usar?
 
@@ -838,15 +912,103 @@ th, td { padding: 6px 10px; word-wrap: break-word; }
 | Hadoop | Simples, só filesystem | Exige rename atômico | <mark>Não recomendado</mark> |
 
 <!--
-- HadoopCatalog não suporta rename de tabela e exige rename atômico do filesystem: evite em object stores como S3.
-- REST Catalog é hoje o protocolo padrão da comunidade Iceberg, por isso costuma ser a escolha mais segura.
+- REST Catalog é o protocolo padrão da comunidade Iceberg, por isso costuma ser a escolha mais segura.
+- HadoopCatalog exige rename atômico do filesystem: evite em object stores como S3.
 -->
 
 ---
 
-<!-- _class: light logo-tr -->
+<!-- _class: secao light -->
+<!-- _paginate: false -->
+<!-- _footer: "" -->
 
-## Preprocess com Polars
+# _Extra_ Snowflake
+
+<!--
+- Slides de apoio: duas formas de ter uma tabela Iceberg no Snowflake.
+-->
+
+---
+
+<!-- _class: light -->
+
+## Snowflake: Lendo Iceberg Externo
+
+```sql
+CREATE ICEBERG TABLE pedidos_ext
+  EXTERNAL_VOLUME = 'meu_volume'
+  CATALOG = 'meu_catalogo'
+  CATALOG_TABLE_NAME = 'pedidos';
+
+SELECT * FROM pedidos_ext;
+```
+
+<div class="nota"><b>Custo:</b> ler de fora pode gerar cobrança de transferência de dados do provedor de nuvem.</div>
+
+<!--
+- Os dados continuam no bucket de origem; o Snowflake só lê.
+- Custo: além do warehouse, o provedor de nuvem pode cobrar a saída de dados (egress), em geral entre regiões ou nuvens. Confira os preços do seu provedor.
+-->
+
+---
+
+<!-- _class: light -->
+
+## Snowflake como Catálogo: Copiando
+
+```sql
+CREATE ICEBERG TABLE pedidos
+  CATALOG = 'SNOWFLAKE'
+  EXTERNAL_VOLUME = 'meu_volume'
+  BASE_LOCATION = 'pedidos/'
+AS SELECT * FROM pedidos_ext;
+```
+
+<div class="nota"><b>Custo:</b> a leitura externa acontece na cópia; depois a tabela é lida no seu volume.</div>
+
+<!--
+- CATALOG = 'SNOWFLAKE': o Snowflake gerencia o catálogo e os metadados; os arquivos ficam no seu volume.
+- A cópia lê a tabela externa uma vez (vale a nota de custo anterior).
+-->
+
+---
+
+<!-- _class: secao light -->
+<!-- _paginate: false -->
+<!-- _footer: "" -->
+
+# _Extra_ Python + Polars
+
+<!--
+- Slides de apoio: tipos, preprocess e Parquet particionado.
+-->
+
+---
+
+<!-- _class: light logo-br logo-python-snowflake -->
+
+## Tipos como enumeradores
+
+```python
+class PolarsTyping(Enum):
+    INT = pl.Int64
+    FLOAT = pl.Float64
+    TEXT = pl.String
+class SnowflakeTyping(Enum):
+    INT = "NUMBER(38,0)"
+    FLOAT = "FLOAT"
+    TEXT = "VARCHAR"
+```
+
+<!--
+- Mesmo nome de membro nos dois enums: um lado é o tipo no Polars, o outro o tipo no Snowflake.
+-->
+
+---
+
+<!-- _class: light logo-br logo-python-snowflake -->
+
+## Uma coluna, dois tipos
 
 ```python
 Column(
@@ -858,24 +1020,50 @@ Column(
 ```
 
 <!--
-- CsvReader (lazy) → transforma → Parquet.
-- orchestrate_preprocess usa SCHEMA_BY_DATASET para tipar cada coluna.
+- Cada Column liga o nome no arquivo ao nome no Snowflake e junta os dois tipos.
 -->
-
 
 ---
 
-<!-- _class: figurinhas light -->
-<!-- _paginate: false -->
-<!-- _footer: "" -->
+<!-- _class: light logo-br logo-python-snowflake -->
 
-## Figurinhas
+## Preprocess com Polars
 
-### Dazumbanho! Chegasse ao fim, ixtepô!
+```python
+tipos = {c.name_in_file: c.polars_type.value for c in COLS}
+nomes = {c.name_in_file: c.name_in_snowflake for c in COLS}
 
-![w:290](img/marca/lockup-claro.png) ![w:190](img/figurinhas/bruxa.png) ![w:220](img/figurinhas/mago-ola.png) ![w:130](img/figurinhas/mago.png) ![w:120](img/figurinhas/explosao.png)
+(pl.scan_csv(csv, schema_overrides=tipos)
+   .rename(nomes)
+   .sink_parquet("pedidos.parquet"))
+```
 
-![w:280](img/marca/logo-assinatura.png) <span class="circulo">olha aqui</span> <mark>marca-texto</mark> ![w:96](img/marca/icone-seta.png) ![w:96](img/marca/icone-codigo.png)
+<!--
+- COLS é a lista de Column do dataset (SCHEMA_BY_DATASET).
+- scan_csv é lazy: nada é lido até o sink_parquet, que grava em streaming.
+-->
 
-Identidade visual de Ana Terhorst, [anaterhorstdesign.com](https://anaterhorstdesign.com). Valeu, Ana!
-</content>
+---
+
+<!-- _class: light logo-br logo-python -->
+
+## CSVs em Parquet particionado
+
+```python
+(pl.scan_csv("raw/*.csv", schema_overrides=tipos)
+   .rename(nomes)
+   .with_columns(ano=pl.col("criado_em").dt.year())
+   .sink_parquet(
+       pl.PartitionByKey("lake/pedidos", by="ano")))
+```
+
+<!--
+- Resultado no estilo Hive: lake/pedidos/ano=2025/0.parquet, ano=2026/0.parquet.
+- PartitionByKey exige um Polars recente; confira a versão antes de mostrar.
+-->
+
+---
+
+<!-- _class: light -->
+
+![bg fit](img/qr_ct.png)

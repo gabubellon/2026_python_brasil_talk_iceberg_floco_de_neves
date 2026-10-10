@@ -1,7 +1,7 @@
 # Uso: make help
-MARP = npx @marp-team/marp-cli --theme-set pybr2026.css --html --allow-local-files
+MARP = npx @marp-team/marp-cli --no-stdin --theme-set pybr2026.css --html --allow-local-files
 
-.PHONY: help html pdf diagramas grafico qr clean
+.PHONY: help html pdf diagramas grafico logos qr clean
 
 help: ## Lista os comandos
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-10s %s\n", $$1, $$2}'
@@ -12,11 +12,14 @@ html: ## Salva slides.md em slides.html
 pdf: ## Salva slides.md em slides.pdf
 	$(MARP) --pdf slides.md -o slides.pdf
 
-diagramas: ## Regera os diagramas em img/diagramas/
+diagramas: ## Regera os diagramas em img/diagrama-*.png
 	cd scripts/diagramas && for f in camadas derreteu ingestao orquestracao; do uv run $$f.py; done
 
-grafico: ## Regera o gráfico em img/graficos/
+grafico: ## Regera o gráfico em img/grafico-*.png
 	uv run scripts/grafico.py
+
+logos: ## Regera os logos combinados em img/logo-*.png
+	uv run scripts/logos.py
 
 qr: ## Regera img/qr.png (make qr URL=https://endereco)
 	uv run scripts/qr.py $(URL)

@@ -6,8 +6,8 @@ Este repositório guarda os slides da palestra "Iceberg: Floco de Neves" na Pyth
 
 - `slides.md`: a apresentação, o único arquivo de slides.
 - `pybr2026.css`: o tema. Não mude o tema para resolver um slide: use as classes abaixo. Mude o tema só quando a pessoa pedir.
-- `img/`: as imagens dos slides, por pasta: `marca/` (logo, marca-d'água, ícones), `figurinhas/`, `logos/` (tecnologias), `diagramas/`, `fotos/`, `graficos/` e `qr.png`. Imagem que nenhum slide usa é apagada.
-- `scripts/diagramas/`: um script por diagrama de `img/diagramas/`, com `base.py` em comum. `scripts/grafico.py` e `scripts/qr.py`: geram o gráfico e o QR code nas cores da marca (`uv run scripts/qr.py https://endereco`). `make help` lista os atalhos, incluindo `make html` e `make pdf`. Para um gráfico com os dados da pessoa, troque `ROTULOS` e `VALORES` no script, ou copie o script para um gráfico novo.
+- `img/`: todas as imagens ficam direto nesta pasta, sem subpastas, e o prefixo diz o tipo: `marca-*` (lockup, marca-d'água), `logo-*` (tecnologias; `logo-python-snowflake` e similares vêm de `scripts/logos.py`), `figurinha-*`, `diagrama-*`, `foto-*`, `grafico-*`, `icone-*`, `qr.png`. Nomes em português e kebab-case. Imagem que nenhum slide usa é apagada.
+- `scripts/diagramas/`: um script por diagrama `img/diagrama-*.png`, com `base.py` em comum. `scripts/grafico.py` e `scripts/qr.py`: geram o gráfico e o QR code nas cores da marca (`uv run scripts/qr.py https://endereco`). Para logos de tecnologia no canto do slide: `<!-- _class: light logo-br logo-iceberg -->` (`logo-python`, `logo-snowflake`, `logo-python-snowflake`); mais de um logo, combine com `scripts/logos.py`. Evite em slides com imagem grande ou só uma imagem. `make help` lista os atalhos, incluindo `make html` e `make pdf`. Para um gráfico com os dados da pessoa, troque `ROTULOS` e `VALORES` no script, ou copie o script para um gráfico novo.
 
 ## Como um slide é escrito
 
@@ -42,10 +42,16 @@ As anotações são comentários HTML no fim do slide, com dois ou três tópico
 | `destaque` | `## Mensagem` (vai no painel limão) e até quatro tópicos curtos |
 | `imagem-cheia` | `![bg](img/foto.png)` e um parágrafo de legenda com o crédito |
 | `encerramento` | `# Perguntas?`, contatos (`_@usuario_`), `![QR code para ...](img/qr.png)` e o endereço na linha seguinte. Use `_paginate: false` e `_footer: ""` |
-| `figurinhas` | Imagens com largura, como `![w:200](img/figurinhas/bruxa.png)` |
+| `figurinhas` | Imagens com largura, como `![w:200](img/figurinha-bruxa.png)` |
+| `fluxo-logos` | Junto com `fluxo`: logo em cima do texto de cada passo |
+| `tabela-compacta` / `referencias` | Tabela com muitas linhas; `referencias` deixa a 1ª coluna estreita (links) |
+| `foto-frase` / `imagem-centro` | Frase ao lado de foto; imagens pequenas centralizadas sobre um `![bg]` |
+| `fig-mago`, `fig-mago-ola`, `fig-bruxa` | Figurinha em `cartoes`, com `fig-esq` ou `fig-dir` |
 | `light` | Combina com qualquer outra: `<!-- _class: frase light -->` |
 
 Texto ao lado de uma imagem usa a sintaxe do Marp: `![bg right:42%](img/x.png)` ou `![bg left:42%](img/x.png)`.
+
+Sem `<style scoped>` nos slides: o estilo vive no `pybr2026.css`. Blocos em HTML (`.jornada`, `.versus`, `.grade-2`/`.grade-3` com `.cartao`, `.disco`, `.faixa`, `.nota`, `.trilha`) estão documentados no fim do CSS. As anotações de cada slide são um guia de apresentação, com 2 a 3 tópicos; créditos e links vão nos slides de Referências.
 
 ## Regras da marca
 
@@ -54,7 +60,7 @@ Texto ao lado de uma imagem usa a sintaxe do Marp: `![bg right:42%](img/x.png)` 
 - Verde limão como cor de texto, só no fundo escuro. No fundo claro, destaque com o marca-texto: `<mark>palavra</mark>`.
 - Código: o tema aplica as cores do GitHub Light num cartão branco, nos slides escuros e nos claros. Monokai com fundo `#1A1A1A` é a alternativa para quem pedir código no fundo escuro; nesse caso, use fonte grande.
 - Tela de LED do tamanho de uma parede: versão escura, que não ofusca o público. Projetor, TV ou monitor: versão clara, com a classe `light`. O código fica em fundo claro nas duas.
-- Use as figurinhas de `img/figurinhas/` como estão: sem distorcer e sem recolorir. Uma figurinha por slide costuma bastar.
+- Use as figurinhas `img/figurinha-*.png` como estão: sem distorcer e sem recolorir. Uma figurinha por slide costuma bastar.
 - A identidade visual é de Ana Terhorst; mantenha o crédito no slide de figurinhas.
 
 ## Regras de conteúdo

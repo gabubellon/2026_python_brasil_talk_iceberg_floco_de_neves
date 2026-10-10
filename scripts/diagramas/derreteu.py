@@ -2,7 +2,7 @@
 # dependencies = ["matplotlib"]
 # ///
 """Gera o diagrama do caminho do Iceberg ao Snowflake (versão clara, fundo transparente).
-As fotos ficam em img/fotos/iceberg.jpg e img/fotos/snowflake.jpg.
+As fotos ficam em img/foto-iceberg.jpg e img/foto-snowflake.jpg.
 
     uv run scripts/diagramas/derreteu.py
 """
